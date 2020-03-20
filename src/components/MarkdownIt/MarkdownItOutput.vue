@@ -32,7 +32,6 @@
     display: inline-block;
   }
   .mitOutput pre.hljs code { /* https://highlightjs.org/ */
-    /* override vuetify styles */
     box-shadow: none!important;
     border-radius: 0!important;
     background-color: transparent!important;

@@ -1,12 +1,5 @@
 <template>
   <div class="document">
-    <v-container>
-      <v-layout
-        align-center
-      >
-        <v-flex xs12>
-          <v-card>
-            <v-card-title>
               <h1>
                 <reversible-text-field
                   :value.sync="displayName"
@@ -28,11 +21,6 @@
               <data-objects
                 :appId="appId"
               />
-            </v-card-title>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
   </div>
 </template>
 

@@ -1,13 +1,9 @@
 module.exports = {
-  "transpileDependencies": [
-    "vuetify"
-  ],
   "configureWebpack": {
     "module": {
       "rules": [
         {
-          "test": /content\/[\w\W]+\.md$/,
-          "exclude": /dist|node_components|src/,
+          "test": /\/content\/[^/]+\.md$/,
           "use": [
             "vue-loader",
             {

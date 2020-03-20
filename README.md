@@ -3,7 +3,6 @@ this is work-in-progress information design study on remixable semantic informat
 The service is based on a client implemented in
 [Vue](https://vuejs.org/),
 [Vuex](https://vuex.vuejs.org/), 
-[Vuetify](https://vuetifyjs.com/en/), 
 [markdownIt](https://github.com/markdown-it/markdown-it), and hosted by github pages. 
 It operates on a public human-readable data repository composed of nested markdown documents. 
 Upon release people will be able to contribute using this application, or by editing referenced .md files by other means.

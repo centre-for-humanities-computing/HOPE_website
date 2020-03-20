@@ -1,63 +1,34 @@
 <template>
-  <div class="navigation">
-    <v-toolbar id="navigation">
-      <v-toolbar-items>
-        <v-btn
-          v-show="$vuetify.breakpoint.mdAndDown"
-          @click.stop="drawer = !drawer"
-        >
-          <v-icon>menu</v-icon>
-        </v-btn>
-      </v-toolbar-items>
-      <v-toolbar-title>
-        <span
-          class="hidden-md-and-down"
+  <div id=navigation class="card">
+    <div class="pad left">
+      <div class="title">
+        <div class="link"
           @click="$router.push('/')"
         >
           HOPE
-        </span>
-      </v-toolbar-title>
-      <v-spacer />
-      <v-toolbar-items>
-        <v-btn
-          v-for="(route, index) in navBarRoutes"
-          :key="index"
+        </div>
+      </div>
+    </div>
+
+    <div class="items">
+      <div
+        class="item"
+        v-for="(route, index) in menuRoutes"
+        :key="index"
+      >
+        <div
+          class="link"
           text
           :value="isActivePath(route.path)"
           @click="push(route.path)"
         >
           {{route.title}}
-        </v-btn>
-      </v-toolbar-items>
-      <v-spacer class="hidden-md-and-up" />
-      <!-- auth /-->
-    </v-toolbar>
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      temporary
-      disable-resize-watcher
-    >
-      <v-list
-        class="pt-0"
-        dense
-      >
-        <v-list-item
-          v-for="route in menuRoutes"
-          :key="route.title"
-          @click="push(route.path)"
-        >
-          <v-list-item-action class="text-left">
-            <v-icon>{{ route.icon }}</v-icon>
-          </v-list-item-action>
+        </div>
+      </div>
+    </div>
 
-          <v-list-item-content class="text-right">
-            <v-list-item-title>{{ route.title }}</v-list-item-title>
-          </v-list-item-content>
+    <div class="pad right" />
 
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
   </div>
 </template>
 
@@ -73,20 +44,6 @@ export default {
       drawer: false
     }
   },
-  computed: {
-    navBarRoutes() {
-      const currentBreakpoint = this.$vuetify.breakpoint.name
-      const viewportBreakpointRoutes = {
-        xs: ['/resources'],
-        sm: ['/contact', '/resources'],
-        md: ['/people', '/contact', '/resources'],
-        lg: ['/people', '/contact', '/resources'],
-        xl: ['/people', '/contact', '/resources'],
-      }
-      const navBarLinks = this.routes.filter(r => viewportBreakpointRoutes[currentBreakpoint].indexOf(r.path) >= 0)
-      return navBarLinks
-    }
-  },
   methods: {
     isActivePath(path) {
       return this.$router.currentRoute.path === path
@@ -95,10 +52,21 @@ export default {
       this.drawer = false
       this.$router.push(url)
     },
-    onInput(v) {
-      console.log('oninput', v)
-
-    }
   }
 }
 </script>
+<style>
+  #navigation {
+    width: 100vm;
+    display:grid;
+    grid-template-columns: auto auto auto;
+  }
+  .items {
+    display: flex;
+    flex-direction: row;
+  }
+  .item {
+    width: 100%;
+    text-align: center;
+  }
+</style>

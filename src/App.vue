@@ -1,5 +1,5 @@
 <template>
-  <v-app
+  <div
     id="app"
     :style="{fontSize: fontSize + '%'}"
   >
@@ -7,28 +7,16 @@
     <div
       class="page"
     >
-      <v-container
-        fluid
-        fill-height
-        class="pageBody"
+
+      <div
+        id="pageContent"
+        class="gridKids"
       >
-        <v-layout>
-          <v-flex
-            xs12
-            lg10
-            offset-lg1
-          >
-            <div
-              id="pageContent"
-              class="gridKids"
-            >
-              <box />
-            </div>
-          </v-flex>
-        </v-layout>
-      </v-container>
+        <box />
+      </div>
+
     </div>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -63,50 +51,39 @@
     mounted() {
       vm = this
       this.$nextTick(function () {
+        window.addEventListener('resize', vm.trackWindowSize)
         window.addEventListener('resize', vm.adjustFontSize)
+        vm.trackWindowSize()
         vm.adjustFontSize()
       })
     },
     methods: {
+      trackWindowSize() {
+        this.windowWidth = window.innerWidth
+        this.windowHeight = window.innerHeight
+      },
       adjustFontSize() {
         const nominalSize = 100
         const thresholdWidth = 1000
         if (window.innerWidth < thresholdWidth) {
-          this.fontSize = Math.min(Math.max(this.minFontSize, window.innerWidth / 6), nominalSize)
+          this.fontSize = Math.min(Math.max(this.minFontSize, this.windowWidth / 6), nominalSize)
         } else {
-          this.fontSize = Math.min(Math.max(nominalSize, window.innerWidth / 10), this.maxFontSize)
+          this.fontSize = Math.min(Math.max(nominalSize, this.windowHeight / 10), this.maxFontSize)
         }
       }
     }
   }
 </script>
 
-<style>
-  @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons');
-
-  #app {
+<style lang="scss">
+  body {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    font-size: 16px;
-    color: #2c3e50;
   }
-
-  .gridKids > *,
-  .side > *,
-  .grid {
-    display: grid;
-    grid-column-gap: 2em;
-    grid-row-gap: 1em;
-    grid-template-rows: repeat(auto-fit, 1fr);
+  .card {
+    box-shadow: .1em 0 .3em #ddd;
+    margin-bottom: 1em;
   }
-
-  .gridRow {
-    grid-template-rows: none;
-    grid-template-columns: repeat(auto-fit, 1fr);
-  }
-  .pageBody .v-card {
-    text-align: left;
+  .body {
+    padding: 1em;
   }
 </style>
