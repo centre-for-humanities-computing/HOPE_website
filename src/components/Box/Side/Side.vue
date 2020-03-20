@@ -4,13 +4,15 @@
     :class="faceClasses"
     :style="faceStyle"
   >
-    <router-view
-      :name="face"
-    />
-    <span
-      v-if="debug"
-      style="color: white; font-size: 72px"
-    >{{ face }}</span>
+    <div class="frame">
+      <router-view
+        :name="face"
+      />
+      <span
+        v-if="debug"
+        style="color: white; font-size: 72px"
+      >{{ face }}</span>
+    </div>
   </div>
 </template>
 
@@ -158,11 +160,14 @@ export default {
     min-width: 100px;
   }
 
-  .side > * {
-    opacity: 0.25
+  .side > .frame {
+    position: fixed;
+    top: 1em;
+    opacity: 0.25;
+    padding-bottom: 2em;
   }
   .side.active > * {
-    opacity: 1
+    opacity: 1;
   }
   .side.opposite > * {
     opacity: 0.1

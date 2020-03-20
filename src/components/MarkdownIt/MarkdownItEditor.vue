@@ -1,11 +1,8 @@
 <template>
-  <v-textarea
+  <textarea
+    class="mdInput"
     v-model="md"
-    label="markdownIt input"
-    counter
-    full-width
-    auto-grow
-  ></v-textarea>
+  ></textarea>
 </template>
 
 <script>
@@ -21,5 +18,7 @@
 </script>
 
 <style scoped>
-
+.mdInput {
+  padding: .5em
+}
 </style>

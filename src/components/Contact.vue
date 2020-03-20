@@ -1,27 +1,44 @@
 <template>
   <div class="contact">
-    <v-container>
-      <v-layout
-        align-center
-      >
-        <v-flex xs12>
-          <v-card>
-            <v-card-title>
-              <h1>Contact coming soon...</h1>
-            </v-card-title>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
+    <vHeading
+      title="Contact"
+    ></vHeading>
+    <vPerson
+      v-if=person
+      :person="person"></vPerson>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Contact'
-}
+  import vPerson from './vPerson'
+  import repoFileMixin from "../mixins/repoFileMixin"
+  export default {
+    name: 'Contact',
+    components: {
+      vPerson
+    },
+    mixins: [
+      repoFileMixin
+    ],
+    props: {
+      filePath: {
+        type: String,
+        default: 'people.json'
+      }
+    },
+    computed: {
+      person: {
+        get() {
+          let person
+          if (this.file) {
+            person = this.file.find(p => p.role === 'PI')
+          }
+          return person
+        }
+      }
+    }
+  }
 </script>
 
 <style scoped>
-
 </style>

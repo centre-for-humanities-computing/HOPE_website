@@ -6,20 +6,25 @@ import moment from 'moment'
 import _ from 'lodash'
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 import VueSimpleMarkdown from 'vue-simple-markdown'
+import AsyncComputed from 'vue-async-computed'
 
 Vue.config.productionTip = false
 
 Vue.use(VueSimpleMarkdown)
+Vue.use(AsyncComputed)
 
-// prefetch self-nested components
-Vue.component('Md', () => import('./components/Md.vue'))
+// prefetch frequently used components
+Vue.component('vRepoFile', () => import('./components/vRepoFile.vue'))
+Vue.component('vHeading', () => import('./components/vHeading.vue'))
+
+// prefetch self-nestable components
 Vue.component('MarkdownItOutput', () => import('./components/MarkdownIt/MarkdownItOutput.vue'))
 Vue.component('Excursions', () => import('./components/MarkdownIt/components/Excursions.vue'))
 
 Vue.prototype.moment = moment
 Vue.prototype._ = _
 
-Vue.mixin({
+Vue.mixin({ // todo: review
   data() {
     return {
       windowWidth: 100,

@@ -1,25 +1,29 @@
 <template>
   <div class="home">
-    <div class="heading">
-      <h1>HOPE - How Democracies Cope with Covid19</h1>
-      <p>A Data-Driven Approach</p>
+    <vHeading
+      title="HOPE - How Democracies Cope with COVID19"
+      subtitle="A Data-Driven Approach"
+    ></vHeading>
+    <div class="content">
+      <vRepoFile filePath="home.md"></vRepoFile>
+      <hr>
+      <vFeed></vFeed>
     </div>
-    <md :source="md"></md>
-
   </div>
 </template>
 
 <script>
-  import homeMD from '../../content/home.md'
+  import vFeed from './vFeed'
   export default {
     name: 'Home',
-    data() {
-      return {
-        md: homeMD.source
-      }
-    },
+    components: {
+      vFeed
+    }
   }
 </script>
 <style scoped>
 
+  .content>*:not(:last-child) {
+    margin-bottom: 2em;
+  }
 </style>

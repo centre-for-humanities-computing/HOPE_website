@@ -1,34 +1,18 @@
 <template>
-  <div id=navigation class="card">
-    <div class="pad left">
-      <div class="title">
-        <div class="link"
-          @click="$router.push('/')"
-        >
-          HOPE
-        </div>
-      </div>
-    </div>
-
-    <div class="items">
+  <div id=navigation class="flex shadow">
+    <div
+      class="item light"
+      :class="{dark: index === activeIndex}"
+      v-for="(route, index) in menuRoutes"
+      :key="index"
+    >
       <div
-        class="item"
-        v-for="(route, index) in menuRoutes"
-        :key="index"
+        class="link flex"
+        @click="push(route.path)"
       >
-        <div
-          class="link"
-          text
-          :value="isActivePath(route.path)"
-          @click="push(route.path)"
-        >
-          {{route.title}}
-        </div>
+        {{route.title}}
       </div>
     </div>
-
-    <div class="pad right" />
-
   </div>
 </template>
 
@@ -41,31 +25,26 @@ export default {
     return {
       routes,
       menuRoutes: routes.filter(r => r.inMenu),
-      drawer: false
+      drawer: false,
+      activeIndex: 0
     }
   },
   methods: {
-    isActivePath(path) {
-      return this.$router.currentRoute.path === path
-    },
     push(url) {
       this.drawer = false
       this.$router.push(url)
+      this.activeIndex = this.menuRoutes.findIndex(r => r.path === url)
     },
   }
 }
 </script>
-<style>
+
+<style scoped>
   #navigation {
     width: 100vm;
-    display:grid;
-    grid-template-columns: auto auto auto;
-  }
-  .items {
-    display: flex;
-    flex-direction: row;
   }
   .item {
+    padding: .2em 0;
     width: 100%;
     text-align: center;
   }

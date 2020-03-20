@@ -1,67 +1,47 @@
 <template>
   <div class="people">
-    <h1>People</h1>
-    <div
-      v-for="(person, index) in people"
-      :key="index"
-      class="person card"
-    >
-      <div class="body">
-        <img :src="person.imageUrl" :alt="`image of ${person.name}`">
-        <div class="details">
-          <div class="title">{{person.title}}</div>
-          <div class="name">{{person.name}}</div>
-          <div class="contactDetails">
-            <div class="affiliation">
-              {{person.affiliation}}
-            </div>
-            <div
-              v-if="person.building && person.room"
-              class="location">
-              <div class="building" @click="$router.push(`https://international.au.dk/about/contact/?b=${person.room}`)"></div>
-              <div class="room">{{person.room}}</div>
-            </div>
-            <div class="email">{{person.email}}</div>
-            <div
-              v-if="Array.isArray(person.phone)"
-              class="phone">
-              <div
-                v-for="number in person.phone"
-                :key="number"
-                class="number">
-                {{number}}</div>
-              </div>
-            <div
-              v-else
-              class="number">{{person.phone}}</div>
-          </div>
-        </div>
-      </div>
+    <vHeading
+      title="People"
+    ></vHeading>
+    <div class="list">
+      <vPerson
+        v-for="(entry, index) in file"
+        :key="index"
+        :person="entry"
+      ></vPerson>
     </div>
   </div>
 </template>
 
 <script>
-import people from '../../content/people.json'
+import vPerson from './vPerson'
+import repoFileMixin from "../mixins/repoFileMixin"
 export default {
   name: 'People',
-  data() {
-    return {
-      people
+  components: {
+    vPerson
+  },
+  mixins: [
+    repoFileMixin
+  ],
+  props: {
+    filePath: {
+      type: String,
+      default: 'people.json'
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
-  .body {
-    display: grid;
-    grid-template-columns: 180px auto;
+  .people {
+    text-align: center;
   }
-  img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
+  .list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
   }
 </style>

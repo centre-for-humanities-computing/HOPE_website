@@ -1,26 +1,8 @@
 <template>
-  <v-row
-    no-gutters
-  >
-    <v-col :cols="6">
-      <v-card
-        grey
-        class="pa-2"
-        outlined
-        tile
-        sm-6
-      >
-        <markdown-it-editor :md="md"></markdown-it-editor>
-      </v-card>
-    </v-col>
-    <v-col :cols="6">
-      <div
-        class="pa-2"
-      >
-        <markdown-it-output :md="md"></markdown-it-output>
-      </div>
-    </v-col>
-  </v-row>
+  <div class="mdEditor">
+    <markdown-it-editor :md="md"></markdown-it-editor>
+    <markdown-it-output :md="md"></markdown-it-output>
+  </div>
 </template>
 
 <script>
@@ -41,6 +23,9 @@
   }
 </script>
 
-<style>
-
+<style scoped>
+  .mdEditor {
+    display: grid;
+    grid-template-columns: 50% auto;
+  }
 </style>

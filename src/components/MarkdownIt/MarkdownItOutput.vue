@@ -30,6 +30,7 @@
 <style>
   .mitOutput {
     display: inline-block;
+    padding : .5em;
   }
   .mitOutput pre.hljs code { /* https://highlightjs.org/ */
     box-shadow: none!important;

@@ -1,24 +1,15 @@
 <template>
   <div class="resources">
-    <v-container>
-      <v-layout
-        align-center
-      >
-        <v-flex xs12>
-          <v-card>
-            <v-card-title>
-              <h1>Resources coming soon...</h1>
-            </v-card-title>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
+    <vHeading
+      title="Resources"
+    ></vHeading>
+    <vRepoFile filePath="resources.md"></vRepoFile>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Resources'
+  name: 'Resources',
 }
 </script>
 

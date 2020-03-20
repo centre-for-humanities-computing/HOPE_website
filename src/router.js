@@ -38,7 +38,7 @@ export const routes = [
     component: () => import(/* webpackChunkName: "search" */ './components/Contact.vue')
   },
   {
-    path: '/markdownItTests',
+    path: '/md',
     title: 'MarkdownIt Tests',
     icon: 'spellcheck',
     inMenu: false,
@@ -65,7 +65,7 @@ const pathFaces = {
   '/people': 'top',
   '/resources': 'right',
   '/contact': 'back',
-  '/markdownItTests': 'bottom',
+  '/md': 'bottom',
   '/search': 'bottom',
 }
 

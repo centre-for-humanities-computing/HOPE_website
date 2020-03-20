@@ -8,7 +8,6 @@
 <script>
   import { mapState } from "../../../modules/markdownItTests"
   import * as Course from "../../../modules/courses"
-  import * as actions from '../../../modules/courses/'
   import MarkdownIt from '../../MarkdownIt/MarkdownIt.vue'
 
   export default {

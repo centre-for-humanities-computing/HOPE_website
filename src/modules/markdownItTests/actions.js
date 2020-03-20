@@ -1,6 +1,6 @@
 import * as model from './types'
 
-import tests from '../../../content/markdownIt'
+import tests from '../../assets/markdownIt'
 
 let items = []
 for (let name in tests) {
