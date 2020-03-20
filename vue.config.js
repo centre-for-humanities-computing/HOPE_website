@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   "configureWebpack": {
     "module": {
@@ -17,5 +19,6 @@ module.exports = {
       ]
     }
   },
-  "runtimeCompiler": true
+  "runtimeCompiler": true,
+  outputDir: path.resolve(__dirname, "./docs")
 }

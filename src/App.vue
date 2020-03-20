@@ -68,7 +68,7 @@
   body {
     display: flex;
     flex-direction: column;
-    padding: 0 2vm;
+    padding: 0 2vm 2em 0;
     align-items: center;
     justify-content: center;
     font-family: 'Fira Sans', sans-serif;
@@ -78,7 +78,6 @@
     background-size: cover;
     background-blend-mode: color-dodge;
     background-image: url('assets/background.jpg');
-    padding-bottom: 2em;
   }
   #app {
     width: 100%;

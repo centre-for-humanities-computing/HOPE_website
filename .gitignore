@@ -1,6 +1,5 @@
 secrets/
 .idea/
-dist/
 
 .DS_Store
 
@@ -80,9 +79,6 @@ typings/
 
 # nuxt.js build output
 .nuxt
-
-# vuepress build output
-.vuepress/dist
 
 # Serverless directories
 .serverless/

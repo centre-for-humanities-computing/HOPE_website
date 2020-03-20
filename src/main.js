@@ -4,13 +4,10 @@ import router from './router'
 import store from './modules'
 import moment from 'moment'
 import _ from 'lodash'
-import 'vue-simple-markdown/dist/vue-simple-markdown.css'
-import VueSimpleMarkdown from 'vue-simple-markdown'
 import AsyncComputed from 'vue-async-computed'
 
 Vue.config.productionTip = false
 
-Vue.use(VueSimpleMarkdown)
 Vue.use(AsyncComputed)
 
 // prefetch frequently used components
