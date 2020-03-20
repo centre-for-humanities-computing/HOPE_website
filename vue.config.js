@@ -20,5 +20,7 @@ module.exports = {
     }
   },
   "runtimeCompiler": true,
-  outputDir: path.resolve(__dirname, "./docs")
+  outputDir: path.resolve(__dirname, "./docs"),
+  publicPath: '/HOPE_website/'
+
 }
