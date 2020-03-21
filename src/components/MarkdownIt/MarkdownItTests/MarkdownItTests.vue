@@ -1,29 +1,17 @@
 <template>
   <div class="document">
-    <v-container>
-      <v-layout
-        align-center
-      >
-        <v-flex xs12>
-          <v-card>
-            <v-card-text>
-              <MarkdownItTest
-                v-for="(item, index) in items"
-                :key="index"
-                :id="item.id"
-              />
-              <v-btn
-                class="mt-2"
-                small
-                @click="addMarkdownItTest"
-              >
-                Add MarkdownItTest
-              </v-btn>
-            </v-card-text>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
+    <MarkdownItTest
+      v-for="(item, index) in items"
+      :key="index"
+      :id="item.id"
+    />
+    <v-btn
+      class="mt-2"
+      small
+      @click="addMarkdownItTest"
+    >
+      Add MarkdownItTest
+    </v-btn>
   </div>
 </template>
 

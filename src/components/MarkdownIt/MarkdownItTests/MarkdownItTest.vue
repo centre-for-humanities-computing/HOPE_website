@@ -7,7 +7,6 @@
 
 <script>
   import { mapState } from "../../../modules/markdownItTests"
-  import * as Course from "../../../modules/courses"
   import MarkdownIt from '../../MarkdownIt/MarkdownIt.vue'
 
   export default {
@@ -33,11 +32,6 @@
     created() {
       this['GET_POINTS']()
     },
-    methods: {
-      ...Course.mapActions([
-        'GET_POINTS'
-      ])
-    }
   }
 </script>
 

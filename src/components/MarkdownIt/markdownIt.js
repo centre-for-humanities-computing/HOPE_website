@@ -1,6 +1,4 @@
 import MarkdownIt from 'markdown-it'
-import mitContainer from 'markdown-it-container'
-import excursion from './plugins/excursions'
 import highlightjs from 'highlightjs'
 import { html } from '../../lib/escape'
 
@@ -29,5 +27,4 @@ export default new MarkdownIt({
   .use(require('markdown-it-footnote'))
   .use(require('markdown-it-deflist'))
   .use(require('markdown-it-abbr'))
-  .use(mitContainer, 'excursion', excursion)
 

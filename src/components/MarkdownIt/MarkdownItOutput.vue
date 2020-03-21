@@ -43,4 +43,7 @@
   .mitOutput blockquote {
     margin-left: 1em;
   }
+  .mitOutput img {
+    max-width: 100%;
+  }
 </style>

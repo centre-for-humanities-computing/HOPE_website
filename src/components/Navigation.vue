@@ -1,5 +1,5 @@
 <template>
-  <div id=navigation class="flex shadow">
+  <div id=navigation class="flex">
     <div
       class="item light"
       :class="{dark: index === activeIndex}"
@@ -41,11 +41,14 @@ export default {
 
 <style scoped>
   #navigation {
-    width: 100vm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .item {
     padding: .2em 0;
-    width: 100%;
+    width: 20em;
+    max-width: 200px;
     text-align: center;
   }
 </style>

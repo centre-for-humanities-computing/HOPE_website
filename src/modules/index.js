@@ -8,15 +8,7 @@ import state from './state'
 
 import box from './box'
 import colors from './colors'
-import courses from './courses'
 import markdownItTests from './markdownItTests'
-/*
-import courses from './courses'
-import episodes from './episodes'
-import expansions from './expansions'
-import summaries from './summaries'
-import examples from './examples'
- */
 
 const debug = process.env.NODE_ENV !== "production";
 
@@ -30,7 +22,6 @@ const store = new Vuex.Store({
   modules: {
     box,
     colors,
-    courses,
     markdownItTests,
   },
   strict: debug
