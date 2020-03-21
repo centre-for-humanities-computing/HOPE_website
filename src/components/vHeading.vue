@@ -49,10 +49,9 @@
   .heading h2
   {
     margin-bottom: 0.1em;
-    line-height: 2em;
+    line-height: 1.4em;
   }
   .subtitle {
     position: relative;
-    top: -1.3em;
   }
 </style>
