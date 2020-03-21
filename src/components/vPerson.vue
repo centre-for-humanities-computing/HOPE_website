@@ -1,6 +1,5 @@
 <template>
-  <div class="person">
-    <div class="body card">
+  <div class="person body card">
       <div class="frame">
         <div
           class="portrait"
@@ -42,7 +41,6 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </template>
 
@@ -70,12 +68,7 @@
   .person {
     text-align: left;
     background-color: transparent;
-    display: flex;
-    align-items: stretch;
-    justify-content: stretch;
     border-radius: .3em;
-  }
-  .body {
     display: grid;
     grid-template-columns: auto auto;
   }

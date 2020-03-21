@@ -162,7 +162,7 @@
   }
 
   .card {
-    margin-bottom: 1em;
+    margin: 0.5em;
     /* light */
     background-color: rgba(255, 255, 255, 0.98);
     color: #262626;

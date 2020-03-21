@@ -4,11 +4,12 @@
       title="People"
     ></vHeading>
     <div class="list">
-      <vPerson
+      <div
         v-for="(entry, index) in file"
         :key="index"
-        :person="entry"
-      ></vPerson>
+        class="item">
+        <vPerson :person="entry"></vPerson>
+      </div>
     </div>
   </div>
 </template>
@@ -41,7 +42,10 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
+  }
+  .item {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
   }
 </style>
