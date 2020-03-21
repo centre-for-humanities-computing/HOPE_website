@@ -74,9 +74,8 @@
     align-items: center;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    background-color: #444d56;
-    background-position: center;
+    background-color: #4d5760;
+    background-position: top left;
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: color-dodge;
@@ -169,6 +168,10 @@
   }
   .md p {
     text-align: justify;
+  }
+  .md hr {
+    clear: both;
+    margin: 2em;
   }
   .md pre.hljs code { /* https://highlightjs.org/ */
     box-shadow: none!important;
