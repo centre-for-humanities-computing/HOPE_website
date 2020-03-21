@@ -43,9 +43,16 @@
 
 <style scoped>
   .heading {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
   }
-  .heading * {
+  .heading h1,
+  .heading h2
+  {
     margin-bottom: 0.1em;
+    line-height: 2em;
+  }
+  .subtitle {
+    position: relative;
+    top: -1.3em;
   }
 </style>

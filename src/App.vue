@@ -94,9 +94,6 @@
   .page {
     width: 96vm;
   }
-  #navigation {
-    width: 100%;
-  }
   h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
   }
@@ -139,12 +136,6 @@
     box-shadow: 0 0 10px 0 rgba(40,40,40,0.3);
   }
 
-  .flex {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
-  }
   .center {
     text-align: center;
   }

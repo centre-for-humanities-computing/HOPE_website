@@ -1,5 +1,5 @@
 <template>
-  <div id=navigation class="flex">
+  <div class="navigation">
     <div
       class="item light"
       :class="{dark: index === activeIndex}"
@@ -7,10 +7,10 @@
       :key="index"
     >
       <div
-        class="link flex"
+        class="link"
         @click="push(route.path)"
       >
-        {{route.title}}
+        <span>{{route.title}}</span>
       </div>
     </div>
   </div>
@@ -48,12 +48,12 @@ export default {
 </script>
 
 <style scoped>
-  #navigation {
+  .navigation {
     display: flex;
-    max-width: 90%;
+    width: 100%;
     justify-content: space-evenly;
     align-items: center;
-    margin: -30px 0 2em 0;
+    margin: -1.5em 0 2em 0;
   }
   .item {
     padding: .2em 0;
@@ -62,4 +62,5 @@ export default {
     max-width: 200px;
     text-align: center;
   }
+
 </style>
