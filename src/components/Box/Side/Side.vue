@@ -163,6 +163,7 @@ export default {
   .side > .frame {
     position: fixed;
     top: 1em;
+    max-width: 96%;
     opacity: 0.25;
     padding-bottom: 2em;
   }
