@@ -17,7 +17,6 @@ Vue.component('vNavigation', () => import('./components/vNavigation.vue'))
 
 // prefetch self-nestable components
 Vue.component('MarkdownItOutput', () => import('./components/MarkdownIt/MarkdownItOutput.vue'))
-Vue.component('Excursions', () => import('./components/MarkdownIt/components/Excursions.vue'))
 
 Vue.prototype.moment = moment
 Vue.prototype._ = _
@@ -37,3 +36,4 @@ new Vue({
   store,
   router
 }).$mount('#app')
+

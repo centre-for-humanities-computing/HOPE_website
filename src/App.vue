@@ -161,5 +161,28 @@
     box-shadow: .1em .1em .5em 0 rgba(40,40,40,0.3);
   }
 
+  /*
+    rendered Markdown
+   */
+  .md {
+    display: inline-block;
+  }
+  .md p {
+    text-align: justify;
+  }
+  .md pre.hljs code { /* https://highlightjs.org/ */
+    box-shadow: none!important;
+    border-radius: 0!important;
+    background-color: transparent!important;
+    color: inherit!important;
+    font-style: inherit!important;
+    font-weight: inherit!important;
+  }
+  .md blockquote {
+    margin-left: 1em;
+  }
+  .md img {
+    max-width: 100%;
+  }
 
 </style>

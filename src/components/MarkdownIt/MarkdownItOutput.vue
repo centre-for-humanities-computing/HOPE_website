@@ -1,14 +1,16 @@
 <template>
-  <v-runtime-template :template="template"></v-runtime-template>
+  <div class="generic">
+    <vGeneric :template="template"></vGeneric>
+  </div>
 </template>
 
 <script>
-  import VRuntimeTemplate from "v-runtime-template";
+  import vGeneric from '../vGeneric'
   import mit from './markdownIt'
   export default {
     name: "MarkdownItOutput",
     components: {
-      VRuntimeTemplate
+      vGeneric
     },
     props: {
       md: {
@@ -21,29 +23,36 @@
         template: '<span>empty</span>'
       }
     },
+    computed: {
+      processedMarkdown() {
+        return this.replaceImagesWithImageComponent(this.md)
+      }
+    },
     created() {
-      this.template = `<div class="mitOutput">${mit.render(this.md)}</div>`
+      let html = mit.render(this.processedMarkdown)
+
+      this.template = `<div class="md">${this.replaceImagesWithImageComponent(html)}</div>`
+    },
+    methods: {
+      replaceImagesWithImageComponent(md) {
+        const rxImageMd = /<img (?:src="(http[^"]+)" alt="([^"]+)")>/g
+        let processed = md
+        let match
+        let index = 0
+        do {
+          match = rxImageMd.exec(md)
+          if (match) {
+            const component = `<vImage src="${match[1]}" alt="${match[2]}" :isOdd="${!!(index % 2)}"/>`
+            processed = processed.replace(match[0], component)
+          }
+          index++
+        } while (match)
+        return processed
+      }
     }
   }
 </script>
 
 <style>
-  .mitOutput {
-    display: inline-block;
-    padding : .5em;
-  }
-  .mitOutput pre.hljs code { /* https://highlightjs.org/ */
-    box-shadow: none!important;
-    border-radius: 0!important;
-    background-color: transparent!important;
-    color: inherit!important;
-    font-style: inherit!important;
-    font-weight: inherit!important;
-  }
-  .mitOutput blockquote {
-    margin-left: 1em;
-  }
-  .mitOutput img {
-    max-width: 100%;
-  }
+
 </style>

@@ -5,9 +5,8 @@
       :level="1"></vHeading>
     <div
       v-if="file"
-      class="list">
+      class="feed">
       <vPost
-        class="post"
         v-for="(articleName, index) in articleNames"
         :key="index"
         :filePath="articleName"
@@ -39,7 +38,7 @@
         if (this.file) {
           articleNames = this.file
             .trim()
-            .split('/n')
+            .split('\n')
             .map(n => `newsfeed/${n.trim()}`)
         }
         return articleNames
@@ -49,5 +48,7 @@
 </script>
 
 <style scoped>
-
+  .feed .post {
+    margin-block-end: 1em;
+  }
 </style>

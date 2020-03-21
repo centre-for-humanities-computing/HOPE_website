@@ -76,6 +76,7 @@ export default {
     $route() { // to, from
       const vm = this
       this.$nextTick(function () {
+        // todo: requestAnimation frame here to adjust size when rendered?
         vm.adjustSize()
       })
     }
@@ -130,7 +131,7 @@ export default {
       return translation
     },
     yRotation(face) {
-      // rotates acitve box side to face the window
+      // rotates active box side to face the window
       let rotation = 0
       if (face === 'front') rotation = `rotateY(0deg)`
       if (face === 'back') rotation = `rotateY(-180deg)`
@@ -153,7 +154,7 @@ export default {
           if (heightChanged) {
             this.$store.commit(namespace + '/' + SET_SCENE_HEIGHT, content.clientHeight)
             this.lastSceneHeight = content.clientHeight
-            // todo: stinks: inefficient size watchdog (alternatives: css?, @mounted$nextTick: content > img@load bootstrapping
+            // todo: stinks: inefficient size watchdog (alternatives: css?, @mounted$nextTick: content > img@load bootstrapping, requestAnimationFrame?, dynamic templates?
             // todo: css3 for sizing: https://stackoverflow.com/questions/16301625/rotated-elements-in-css-that-affect-their-parents-height-correctly#answer-47860039
             this.sizeTimer = setTimeout(this.adjustSize, 1000)
           }
