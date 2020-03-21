@@ -3,11 +3,10 @@
     id="app"
     :style="{fontSize: fontSize + '%'}"
   >
-    <navigation />
     <div
       class="page"
     >
-
+      <navigation />
       <div
         id="pageContent"
         class="gridKids"
@@ -31,9 +30,15 @@
     },
     data() {
       return {
-        minFontSize: 100,
-        maxFontSize: 200,
-        fontSize: 120
+        fontSize: 100
+      }
+    },
+    computed: {
+      minFontSize() {
+        return this.$store.state.minFontSize
+      },
+      maxFontSize() {
+        return this.$store.state.maxFontSize
       }
     },
     mounted() {
@@ -51,7 +56,7 @@
         this.windowHeight = window.innerHeight
       },
       adjustFontSize() {
-        const nominalSize = 120
+        const nominalSize = 100
         const thresholdWidth = 800
         if (window.innerWidth < thresholdWidth) {
           this.fontSize = Math.min(Math.max(this.minFontSize, this.windowWidth / 6), nominalSize)
@@ -64,25 +69,54 @@
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
   body {
     display: flex;
     flex-direction: column;
     padding: 0 2vm 2em 0;
     align-items: center;
     justify-content: center;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
     background-color: #444d56;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: color-dodge;
     background-image: url('assets/background.jpg');
+    line-height: 2em;
+    font-weight: 300;
+  }
+  * {
+    box-sizing: border-box;
   }
   #app {
     width: 100%;
     max-width: 1400px;
   }
+  .page {
+    width: 96vm;
+  }
+  #navigation {
+    width: 100%;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+  }
+  p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+  img {
+    border-radius: .2em
+  }
+  ul {
+    list-style-type: circle;
+  }
+
   .body {
     padding: 1.5em;
   }
@@ -102,8 +136,8 @@
     padding: 1.5em 3em;
     border-radius: .2em;
     /* light */
-    background-color: rgba(255, 255, 255, 0.98);
-    color: #262626;
+    background-color: rgba(255, 255, 255, 0.97);
+    color: #282828;
     /* shadow */
     box-shadow: 0 0 10px 0 rgba(40,40,40,0.3);
   }
@@ -119,7 +153,7 @@
   }
 
   .light {
-    background-color: rgba(255, 255, 255, 0.98);
+    background-color: rgba(255, 255, 255, 0.97);
     color: #262626;
   }
   .dark {
@@ -138,5 +172,6 @@
     /* shadow */
     box-shadow: .1em .1em .5em 0 rgba(40,40,40,0.3);
   }
+
 
 </style>
