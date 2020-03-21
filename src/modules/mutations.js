@@ -1,7 +1,8 @@
-import {SET_FLAVOR} from './types'
+import * as actions from './types'
+import Vue from 'vue'
 const mutations = {
-  [SET_FLAVOR](state, value){
-    state.preferredFlavor = value
+  [actions.SET_ACTIVE_ROUTE](state, value){
+    Vue.set(state, 'activeRoute', value)
   }
 }
 

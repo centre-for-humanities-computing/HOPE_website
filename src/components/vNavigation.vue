@@ -20,20 +20,28 @@
 import {routes} from '../router'
 
 export default {
-  name: 'Navigation',
+  name: 'vNavigation',
   data() {
     return {
       routes,
       menuRoutes: routes.filter(r => r.inMenu),
       drawer: false,
-      activeIndex: 0
+    }
+  },
+  computed: {
+    activeRoute() {
+      return this.$store.state.activeRoute
+    },
+    activeIndex() {
+      return this.menuRoutes.findIndex(r => r.path === this.activeRoute)
     }
   },
   methods: {
     push(url) {
-      this.drawer = false
-      this.$router.push(url)
-      this.activeIndex = this.menuRoutes.findIndex(r => r.path === url)
+      if (url !== this.activeRoute) {
+        this.$router.push(url)
+        this.$store.commit('SET_ACTIVE_ROUTE', url)
+      }
     },
   }
 }
@@ -42,12 +50,15 @@ export default {
 <style scoped>
   #navigation {
     display: flex;
-    justify-content: space-between;
+    max-width: 90%;
+    justify-content: space-evenly;
     align-items: center;
+    margin: -30px 0 2em 0;
   }
   .item {
     padding: .2em 0;
-    width: 20em;
+    width: 22%;
+    min-width: 6em;
     max-width: 200px;
     text-align: center;
   }

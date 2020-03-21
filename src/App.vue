@@ -6,7 +6,6 @@
     <div
       class="page"
     >
-      <navigation />
       <div
         id="pageContent"
         class="gridKids"
@@ -19,13 +18,11 @@
 </template>
 
 <script>
-  import Navigation from './components/Navigation'
   import Box from './components/Box'
   let vm
   export default {
     name: 'App',
     components: {
-      Navigation,
       Box
     },
     data() {

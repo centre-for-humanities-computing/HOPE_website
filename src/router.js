@@ -2,7 +2,8 @@ import _ from 'lodash'
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from './modules'
-import { SET_BOX_FACE } from './modules/box/types'
+import * as boxActions from './modules/box/types'
+import * as actions from './modules/types'
 import Home from './components/Home.vue'
 import MarkdownItTests from "./components/MarkdownIt/MarkdownItTests/MarkdownItTests"
 
@@ -98,8 +99,8 @@ function findRenderedViewFace(to, from) {
   if (routeViews) {
     routeViews = routeViews.components
     for (let view in routeViews) {
-      console.log('routeViews[view]', routeViews[view])
-      console.log('to', to)
+      // console.log('routeViews[view]', routeViews[view])
+      // console.log('to', to)
 
       if (routeViews[view].title.toLowerCase() === to.path) { // todo: smell: obscure dependency of title and route
         componentView = view
@@ -132,12 +133,13 @@ function getViewFace(to, from) {
   return toFace
 }
 function turnBoxToShowView(toFace) {
-  store.commit('box/' + SET_BOX_FACE, toFace) // turn router-view box to requested view
+  store.commit(`box/${boxActions.SET_BOX_FACE}`, toFace) // turn router-view box to requested view
 }
 function mapViewsToBoxFaces(to, from, next) {
   const toFace = getViewFace(to, from)
   setToFaceComponents(to, from, toFace)
   turnBoxToShowView(toFace)
+  store.commit(actions.SET_ACTIVE_ROUTE, to.path)
   next()
 }
 

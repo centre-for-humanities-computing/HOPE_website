@@ -13,6 +13,7 @@ Vue.use(AsyncComputed)
 // prefetch frequently used components
 Vue.component('vRepoFile', () => import('./components/vRepoFile.vue'))
 Vue.component('vHeading', () => import('./components/vHeading.vue'))
+Vue.component('vNavigation', () => import('./components/vNavigation.vue'))
 
 // prefetch self-nestable components
 Vue.component('MarkdownItOutput', () => import('./components/MarkdownIt/MarkdownItOutput.vue'))

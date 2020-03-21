@@ -1,1 +1,1 @@
-export const SET_FLAVOR = 'SET_FLAVOR'
+export const SET_ACTIVE_ROUTE = 'SET_ACTIVE_ROUTE'

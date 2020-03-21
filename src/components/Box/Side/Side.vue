@@ -5,6 +5,7 @@
     :style="faceStyle"
   >
     <div class="frame">
+      <vNavigation />
       <router-view
         :name="face"
       />
