@@ -21,6 +21,5 @@ module.exports = {
   },
   "runtimeCompiler": true,
   outputDir: path.resolve(__dirname, "./docs"),
-  publicPath: '/HOPE_website/'
-
+  publicPath: process.env.NODE_ENV === 'production' ? '/HOPE_website/' : '/'
 }
