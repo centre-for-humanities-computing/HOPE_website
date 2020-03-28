@@ -20,15 +20,27 @@ export default {
       }
       return axios
         .get(`${repoUrl}${this.filePath}`)
-        .then(response => response.data)
+        .then(response => {
+          return response.data
+        })
         .catch(error => {
-          let message = `GET ${repoUrl}${this.filePath}\n`
+          let message
           if (error.message === 'Request failed with status code 404') {
-            message += `Article not found.`
+            message = `\nArticle not found.`
           } else {
-            message += '\n' + error
+            message = '\n' + error
           }
-          return message
+          let messageHTML = `
+<div class="error">
+  <div class="address"></div>
+    <span class="method">GET</span>
+    <span class="url">${repoUrl}${this.filePath}</span>
+  </div>
+  <div class="message">
+    ${message}
+  </div>
+`
+          return messageHTML
         })
     }
   }

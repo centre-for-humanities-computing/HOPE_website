@@ -1,8 +1,5 @@
 <template>
   <div class="people">
-    <vHeading
-      title="People"
-    ></vHeading>
     <div class="list">
       <div
         v-for="(entry, index) in file"
@@ -18,7 +15,7 @@
 import vPerson from './vPerson'
 import repoFileMixin from "../mixins/repoFileMixin"
 export default {
-  name: 'People',
+  name: 'vPeople',
   components: {
     vPerson
   },

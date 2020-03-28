@@ -1,5 +1,8 @@
 <template>
   <div class="navigation">
+    <div class="logo">
+
+    </div>
     <div
       class="item light"
       :class="{dark: index === activeIndex}"
@@ -53,7 +56,15 @@ export default {
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
-    margin: -1.5em 0 2em 0;
+    background: rgb(19,36,86);
+    background: linear-gradient(180deg, rgba(19,36,86,1) 0%, rgba(0,7,30,1) 100%);
+  }
+  .logo {
+    background-image: url(../assets/bss_logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 144px;
+    min-width: 144px;
   }
   .item {
     padding: .2em 0;

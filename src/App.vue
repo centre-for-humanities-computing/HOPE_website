@@ -3,9 +3,9 @@
     id="app"
     :style="{fontSize: fontSize + '%'}"
   >
-    <div
-      class="page"
-    >
+    <vNavigation />
+    <div class="page">
+
       <div
         id="pageContent"
         class="gridKids"
@@ -70,9 +70,7 @@
   body {
     display: flex;
     flex-direction: column;
-    padding: 0 2vm 2em 0;
     align-items: center;
-    justify-content: center;
     font-family: 'Roboto', sans-serif;
     background-color: #4d5760;
     background-position: top left;
@@ -96,6 +94,9 @@
   h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
   }
+  .heading {
+    font-size: larger;
+  }
   p {
     display: block;
     margin-block-start: 1em;
@@ -109,7 +110,6 @@
   ul {
     list-style-type: circle;
   }
-
   .body {
     padding: 1.5em;
   }
@@ -157,7 +157,7 @@
     background-color: rgba(255, 255, 255, 0.98);
     color: #262626;
     /* shadow */
-    box-shadow: .1em .1em .5em 0 rgba(40,40,40,0.3);
+    box-shadow: .12em .12em .29em 0 rgba(40,40,50,0.3);
   }
 
   /*

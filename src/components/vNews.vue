@@ -1,5 +1,5 @@
 <template>
-  <div class="feed">
+  <div class="news">
     <vHeading
       title="News"
       :level="1"></vHeading>
@@ -19,7 +19,7 @@
   import vPost from './vPost'
   import repoFileMixin from "../mixins/repoFileMixin"
   export default {
-    name: "Feed",
+    name: "vNews",
     components: {
       vPost
     },

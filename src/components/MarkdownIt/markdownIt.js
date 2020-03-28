@@ -17,6 +17,7 @@ function createHighlightJSCodeBlock(str, lang) {
 
 export default new MarkdownIt({
   highlight: createHighlightJSCodeBlock,
+  html: true,
   linkify: true,
   typographer: true
 })

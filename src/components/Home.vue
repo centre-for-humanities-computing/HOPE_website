@@ -5,25 +5,31 @@
       subtitle="A Data-Driven Approach"
     ></vHeading>
     <div class="content">
-      <vRepoFile filePath="home.md"></vRepoFile>
-      <hr>
-      <vFeed></vFeed>
+      <vRepoFile
+        class="card body"
+        filePath="HOPE/one.md"></vRepoFile>
+      <vRepoFile
+        class="card body"
+        filePath="HOPE/two.md"></vRepoFile>
+      <vRepoFile
+        class="card body"
+        filePath="HOPE/three.md"></vRepoFile>
+      <vRepoFile
+        class="card body"
+        filePath="HOPE/four.md"></vRepoFile>
     </div>
   </div>
+
 </template>
 
 <script>
-  import vFeed from './vFeed'
   export default {
     name: 'Home',
-    components: {
-      vFeed
-    }
   }
 </script>
 <style scoped>
-
-  .content>*:not(:last-child) {
-    margin-bottom: 2em;
+  .content {
+    display: grid;
+    grid-template-columns: auto auto;
   }
 </style>

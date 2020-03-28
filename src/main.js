@@ -5,6 +5,7 @@ import store from './modules'
 import moment from 'moment'
 import _ from 'lodash'
 import AsyncComputed from 'vue-async-computed'
+import 'vue-material-design-icons/styles.css';
 
 Vue.config.productionTip = false
 
@@ -18,7 +19,7 @@ Vue.component('vNavigation', () => import('./components/vNavigation.vue'))
 // prefetch self-nestable components
 Vue.component('MarkdownItOutput', () => import('./components/MarkdownIt/MarkdownItOutput.vue'))
 
-Vue.prototype.moment = moment
+Vue.prototype.$moment = moment
 Vue.prototype._ = _
 
 Vue.mixin({ // todo: review

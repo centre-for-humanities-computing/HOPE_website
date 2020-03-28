@@ -1,5 +1,5 @@
 <template>
-  <div class="person body card">
+  <div class="person card">
       <div class="frame">
         <div
           class="portrait"
@@ -68,9 +68,10 @@
   .person {
     text-align: left;
     background-color: transparent;
-    border-radius: .3em;
+    border-radius: .2em;
     display: grid;
     grid-template-columns: auto auto;
+    padding: 1em;
   }
   .frame {
     border: 1px solid rgba(0,0,0,0.2);

@@ -8,7 +8,6 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
   import { SET_SCENE_HEIGHT_IS_DIRTY } from "../modules/box/types"
   export default {
     name: "vImage",
@@ -83,6 +82,9 @@
         img.style.float = this.isOdd ? 'left' : 'right'
         img.style[`margin${this.isOdd ? 'Right' : 'Left'}`] = '1em'
         img.style.marginTop = '.5em'
+
+        const vm = this
+        this.$nextTick(vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, true))
       }
     }
   }

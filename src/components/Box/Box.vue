@@ -76,38 +76,33 @@ export default {
     $route() { // to, from
       const vm = this
       this.$nextTick(function () {
-        // todo: requestAnimation frame here to adjust size when rendered?
-        vm.adjustSize()
+        requestAnimationFrame(vm.adjustSize)
       })
     }
   },
   mounted() {
     const vm = this
+    this.adjustSize()
     this.$nextTick(function () {
-      window.addEventListener('resize', function() {
-        vm.$store.commit(namespace + '/' + SET_SCENE_HEIGHT_IS_DIRTY, true)
-      })
-      vm.$store.commit(namespace + '/' + SET_SCENE_HEIGHT_IS_DIRTY, true)
+
+      window.addEventListener('resize', vm.adjustSize)
+
     })
     this.$watch(
       '$route',
-      function () { // to, from
-        vm.$nextTick(function () {
-          vm.$store.commit(namespace + '/' + SET_SCENE_HEIGHT_IS_DIRTY, true)
-        })
-      }
+       function () { // to, from
+         requestAnimationFrame(vm.adjustSize)
+       }
     )
     this.$watch(
       `$store.state.${namespace}.sceneHeightIsDirty`,
-      function (newVal, oldVal) {
-        const hasChanged = newVal !== oldVal
-        const isDirty = hasChanged && newVal
+      (newVal, oldVal) => {
+        const isDirty = newVal && !oldVal
         if (isDirty) {
           vm.adjustSize()
         }
       }
     )
-    this.adjustSize()
   },
   methods: {
     yTranslation(face) {
@@ -145,19 +140,18 @@ export default {
       this.$store.commit(namespace + '/' + SET_SCENE_WIDTH, Math.min(this.$el.clientWidth, window.innerWidth))
       this.$store.commit(namespace + '/' + SET_BOX_WIDTH, Math.min(this.$el.clientWidth, window.innerWidth))
       this.$store.commit(namespace + '/' + SET_BOX_DEPTH, Math.min(this.$el.clientWidth, window.innerWidth))
+
       const activeSide = this.$el.children[0].querySelector(`.side.active`)
       if (activeSide) {
-        const content = activeSide.children[0]
-        if (content) {
-          if (this.sizeTimer) this.sizeTimer = clearTimeout(this.sizeTimer)
-          const heightChanged = content.clientHeight !== this.lastSceneHeight
-          if (heightChanged) {
-            this.$store.commit(namespace + '/' + SET_SCENE_HEIGHT, content.clientHeight)
-            this.lastSceneHeight = content.clientHeight
-            // todo: stinks: inefficient size watchdog (alternatives: css?, @mounted$nextTick: content > img@load bootstrapping, requestAnimationFrame?, dynamic templates?
-            // todo: css3 for sizing: https://stackoverflow.com/questions/16301625/rotated-elements-in-css-that-affect-their-parents-height-correctly#answer-47860039
-            this.sizeTimer = setTimeout(this.adjustSize, 1000)
-          }
+
+        const frameHeight = window.innerHeight + 24 //activeFrame.offsetHeight + activeFrame.offsetTop
+
+        const heightChanged = frameHeight !== this.lastSceneHeight
+        if (heightChanged) {
+
+          this.$store.commit(namespace + '/' + SET_SCENE_HEIGHT, frameHeight)
+          document.querySelector('body').style.height = frameHeight + 500 + 'px'
+          this.lastSceneHeight = frameHeight
         }
       }
       this.$store.commit(namespace + '/' + SET_SCENE_HEIGHT_IS_DIRTY, false)

@@ -18,25 +18,37 @@ export const routes = [
     component: Home
   },
   {
-    path: '/people',
-    title: 'People',
-    icon: 'people_alt',
+    path: '/about',
+    title: 'About',
+    icon: 'info',
     inMenu: true,
-    component: () => import(/* webpackChunkName: "search" */ './components/People.vue')
+    component: () => import(/* webpackChunkName: "search" */ './components/About.vue')
   },
   {
-    path: '/resources',
-    title: 'Resources',
-    icon: 'extension',
+    path: '/news',
+    title: 'News',
+    icon: 'radio',
     inMenu: true,
-    component: () => import(/* webpackChunkName: "search" */ './components/Resources.vue')
+    component: () => import(/* webpackChunkName: "search" */ './components/vNews.vue')
   },
   {
-    path: '/contact',
-    title: 'Contact',
-    icon: 'contact_mail',
+    path: '/publications',
+    title: 'Publications',
+    icon: 'bookmark',
     inMenu: true,
-    component: () => import(/* webpackChunkName: "search" */ './components/Contact.vue')
+    component: () => import(/* webpackChunkName: "search" */ './components/vPublications.vue')
+  },
+  {
+    path: '/coronaCrisisInDK',
+    title: 'CoronaCrisisInDK',
+    icon: 'track_changes',
+    component: () => import(/* webpackChunkName: "search" */ './components/CoronaCrisisInDK.vue')
+  },
+  {
+    path: '/coronaKrisenIDK',
+    title: 'CoronaKrisenIDK',
+    icon: 'track_changes',
+    component: () => import(/* webpackChunkName: "search" */ './components/CoronaKrisenIDK.vue')
   },
   {
     path: '/md',
@@ -44,13 +56,6 @@ export const routes = [
     icon: 'spellcheck',
     inMenu: false,
     component: MarkdownItTests
-  },
-  {
-    path: '/search',
-    title: 'Search',
-    icon: 'search',
-    inMenu: false,
-    component: () => import(/* webpackChunkName: "search" */ './components/Search.vue')
   },
   {
     path: '*',
@@ -63,9 +68,11 @@ const router = new Router({routes})
 const boxFaces = ['front', 'back', 'right', 'left', 'top', 'bottom']
 const pathFaces = {
   '/': 'front',
-  '/people': 'top',
-  '/resources': 'right',
-  '/contact': 'back',
+  '/about': 'top',
+  '/news': 'right',
+  '/publications': 'back',
+  '/coronaCrisisInDK': 'left',
+  '/coronaKrisenIDK': 'bottom',
   '/md': 'bottom',
   '/search': 'bottom',
 }

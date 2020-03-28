@@ -4,8 +4,6 @@
     :class="faceClasses"
     :style="faceStyle"
   >
-    <div class="frame">
-      <vNavigation />
       <router-view
         :name="face"
       />
@@ -14,7 +12,6 @@
         style="color: white; font-size: 72px"
       >{{ face }}</span>
     </div>
-  </div>
 </template>
 
 <script>
@@ -135,17 +132,17 @@ export default {
     },
   },
   created () {
-    let vm = this
+    const vm = this
     window.addEventListener('scroll', vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, true))
   },
   mounted() {
-    let vm = this
+    const vm = this
     this.$nextTick(function () {
       vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, true)
     })
   },
   updated() {
-    let vm = this
+    const vm = this
     this.$nextTick(function () {
       vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, true)
     })
@@ -159,14 +156,6 @@ export default {
     z-index: 1;
     min-height: 100px;
     min-width: 100px;
-  }
-
-  .side > .frame {
-    position: fixed;
-    top: 1em;
-    max-width: 96%;
-    opacity: 0.25;
-    padding-bottom: 2em;
   }
   .side.active > * {
     opacity: 1;

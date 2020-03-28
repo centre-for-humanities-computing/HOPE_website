@@ -1,5 +1,5 @@
 <template>
-  <div class="generic">
+  <div class="generic mitOutput">
     <vGeneric :template="template"></vGeneric>
   </div>
 </template>
@@ -7,6 +7,7 @@
 <script>
   import vGeneric from '../vGeneric'
   import mit from './markdownIt'
+  import { SET_SCENE_HEIGHT_IS_DIRTY } from "../../modules/box/types"
   export default {
     name: "MarkdownItOutput",
     components: {
@@ -32,6 +33,7 @@
       let html = mit.render(this.processedMarkdown)
 
       this.template = `<div class="md">${this.replaceImagesWithImageComponent(html)}</div>`
+      this.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, true)
     },
     methods: {
       replaceImagesWithImageComponent(md) {
