@@ -133,18 +133,18 @@ export default {
   },
   created () {
     const vm = this
-    window.addEventListener('scroll', vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, true))
+    window.addEventListener('scroll', vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, 'box side created'))
   },
   mounted() {
     const vm = this
     this.$nextTick(function () {
-      vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, true)
+      vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, 'box side mounted')
     })
   },
   updated() {
     const vm = this
     this.$nextTick(function () {
-      vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, true)
+      vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, 'box side updated')
     })
   }
 }

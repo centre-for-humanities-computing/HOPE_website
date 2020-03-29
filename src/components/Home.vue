@@ -32,4 +32,9 @@
     display: grid;
     grid-template-columns: auto auto;
   }
+  @media only screen and (max-width: 720px) {
+    .content {
+      grid-template-columns: auto;
+    }
+  }
 </style>

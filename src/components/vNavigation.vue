@@ -1,19 +1,19 @@
 <template>
   <div class="navigation">
-    <div class="logo">
-
-    </div>
-    <div
-      class="item light"
-      :class="{dark: index === activeIndex}"
-      v-for="(route, index) in menuRoutes"
-      :key="index"
-    >
+    <div class="logo"></div>
+    <div class="links">
       <div
-        class="link"
-        @click="push(route.path)"
+        class="item light"
+        :class="{dark: index === activeIndex}"
+        v-for="(route, index) in menuRoutes"
+        :key="index"
       >
-        <span>{{route.title}}</span>
+        <div
+          class="link"
+          @click="push(route.path)"
+        >
+          <span>{{route.title}}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -66,12 +66,27 @@ export default {
     min-height: 144px;
     min-width: 144px;
   }
+  .links {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+  }
   .item {
     padding: .2em 0;
-    width: 22%;
+    width: 24%;
     min-width: 6em;
     max-width: 200px;
     text-align: center;
+  }
+  @media only screen and (max-width: 580px) {
+    .links {
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+    .item {
+      margin: 4px;
+    }
   }
 
 </style>

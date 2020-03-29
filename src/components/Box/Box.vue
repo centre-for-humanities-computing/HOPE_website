@@ -39,10 +39,13 @@ export default {
         return this.$store.state.box.face
       }
     },
+    perspective() {
+      return this.sceneWidth * 4
+    },
     sceneStyle() {
       let style = {}
       style.height = `${this.sceneHeight}px`
-      style.perspective = `${this.sceneWidth * 4}px`
+      style.perspective = `${this.perspective}px`
       return style
     },
     boxStyle() {
@@ -142,19 +145,46 @@ export default {
       this.$store.commit(namespace + '/' + SET_BOX_DEPTH, Math.min(this.$el.clientWidth, window.innerWidth))
 
       const activeSide = this.$el.children[0].querySelector(`.side.active`)
+
       if (activeSide) {
 
-        const frameHeight = window.innerHeight + 24 //activeFrame.offsetHeight + activeFrame.offsetTop
+        const frameHeight = this.getContentHeight()
 
-        const heightChanged = frameHeight !== this.lastSceneHeight
-        if (heightChanged) {
+        this.$store.commit(namespace + '/' + SET_SCENE_HEIGHT, frameHeight)
 
-          this.$store.commit(namespace + '/' + SET_SCENE_HEIGHT, frameHeight)
-          document.querySelector('body').style.height = frameHeight + 500 + 'px'
-          this.lastSceneHeight = frameHeight
-        }
+        //console.log(`resized scene (${this.lastSceneHeight} to ${frameHeight}) due to: ${this.$store.state.box.sceneHeightIsDirty}`)
+        this.lastSceneHeight = frameHeight
+
       }
+
       this.$store.commit(namespace + '/' + SET_SCENE_HEIGHT_IS_DIRTY, false)
+    },
+    getContentHeight() {
+      const activeSide = this.$el.children[0].querySelector(`.side.active`)
+      const content = activeSide.childNodes[0]
+
+      let height = content.clientHeight
+
+      const ss = window.getComputedStyle(activeSide)
+      const cs = window.getComputedStyle(content)
+
+      height += parseInt(ss.getPropertyValue('padding-top')) || 0
+      height += parseInt(ss.getPropertyValue('padding-bottom')) || 0
+      height += parseInt(ss.getPropertyValue('margin-top')) || 0
+      height += parseInt(ss.getPropertyValue('margin-bottom')) || 0
+      height += parseInt(ss.getPropertyValue('border-width')) || 0
+
+      height += activeSide.offsetTop
+      height += activeSide.childNodes[0].offsetTop
+
+      height += parseInt(cs.getPropertyValue('padding-top')) || 0
+      height += parseInt(cs.getPropertyValue('top')) || 0
+      height += parseInt(cs.getPropertyValue('padding-bottom')) || 0
+      height += parseInt(cs.getPropertyValue('margin-top')) || 0
+      height += parseInt(cs.getPropertyValue('margin-bottom')) || 0
+      height += parseInt(cs.getPropertyValue('border-width')) || 0
+
+      return height * 1.02 // allow for side being "elevated towards the camera"
     }
   }
 }

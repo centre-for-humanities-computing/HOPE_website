@@ -3,6 +3,7 @@
   import Vue from 'vue'
   import vSpinner from './vSpinner'
   import vImage from './vImage'
+  import { SET_SCENE_HEIGHT_IS_DIRTY } from "../modules/box/types"
 
   export default {
     name: "vGeneric",
@@ -33,6 +34,7 @@
       if (!this.rendered) {
         return h('vSpinner');
       } else {
+        this.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, 'markdown rendered')
         return this.rendered()
       }
     },

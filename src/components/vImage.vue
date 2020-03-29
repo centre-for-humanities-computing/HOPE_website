@@ -58,7 +58,6 @@
 
         } else {
 
-
           const columnWidth = img.parentElement.offsetWidth
           const isPanorama = img.clientWidth >= 2 * img.clientHeight
           const imageCanCoverColumn = img.clientWidth >= 0.9 * columnWidth
@@ -83,8 +82,6 @@
         img.style[`margin${this.isOdd ? 'Right' : 'Left'}`] = '1em'
         img.style.marginTop = '.5em'
 
-        const vm = this
-        this.$nextTick(vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, true))
       }
     }
   }
