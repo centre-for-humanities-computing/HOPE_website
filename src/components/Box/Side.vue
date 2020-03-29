@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { SET_SCENE_HEIGHT_IS_DIRTY } from '../../../modules/box/types'
+import { SET_SCENE_HEIGHT_IS_DIRTY } from '../../modules/box/types'
 export default {
   name: 'Side',
   props: {
@@ -116,9 +116,7 @@ export default {
     boxHeight() { return this.$store.state.box.height },
     boxWidth() { return this.$store.state.box.width },
     boxDepth() { return this.$store.state.box.depth },
-    isTargetFace() {
-      return this.face === this.$store.state.box.face
-    },
+    isTargetFace() { return this.face === this.$store.state.box.face },
     isOppositeFace() {
       const opposites = {
         front: 'back',
@@ -132,21 +130,21 @@ export default {
     },
   },
   created () {
-    const vm = this
-    window.addEventListener('scroll', vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, 'box side created'))
+    window.addEventListener('scroll', () => this.invalidateSceneDimensions('box side scroll'), {passive: true})
   },
   mounted() {
-    const vm = this
-    this.$nextTick(function () {
-      vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, 'box side mounted')
-    })
+    this.invalidateSceneDimensions('box side mounted')
   },
   updated() {
-    const vm = this
-    this.$nextTick(function () {
-      vm.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, 'box side updated')
-    })
-  }
+    this.invalidateSceneDimensions('box side updated')
+  },
+  methods: {
+    invalidateSceneDimensions(triggerAlias) {
+      this.$nextTick( ()=> {
+        this.$store.commit('box/' + SET_SCENE_HEIGHT_IS_DIRTY, triggerAlias)
+      })
+    }
+  },
 }
 </script>
 

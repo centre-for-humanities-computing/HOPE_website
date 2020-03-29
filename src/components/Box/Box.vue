@@ -27,6 +27,11 @@ export default {
   components: {
     Side
   },
+  data() {
+    return {
+      resizeCooldownTimer: null
+    }
+  },
   computed: {
     sceneHeight() {
       return this.$store.state.box.sceneHeight
@@ -77,35 +82,30 @@ export default {
   },
   watch: {
     $route() { // to, from
-      const vm = this
-      this.$nextTick(function () {
-        requestAnimationFrame(vm.adjustSize)
-      })
+      () => this.invalidateSceneDimensions('route changed A')
     }
   },
   mounted() {
     const vm = this
-    this.adjustSize()
-    this.$nextTick(function () {
-
-      window.addEventListener('resize', vm.adjustSize)
-
+    this.$nextTick(() => {
+      window.addEventListener('resize', () => this.invalidateSceneDimensions('window resized'))
     })
     this.$watch(
       '$route',
-       function () { // to, from
-         requestAnimationFrame(vm.adjustSize)
-       }
+      () => this.invalidateSceneDimensions('route changed B')
     )
     this.$watch(
       `$store.state.${namespace}.sceneHeightIsDirty`,
       (newVal, oldVal) => {
         const isDirty = newVal && !oldVal
         if (isDirty) {
-          vm.adjustSize()
+          this.invalidateSceneDimensions('scene dimensions are dirty')
         }
       }
     )
+  },
+  updated() {
+    this.invalidateSceneDimensions('route changed B')
   },
   methods: {
     yTranslation(face) {
@@ -147,12 +147,12 @@ export default {
       const activeSide = this.$el.children[0].querySelector(`.side.active`)
 
       if (activeSide) {
+        console.log(`resizing scene due to: ${this.$store.state.box.sceneHeightIsDirty}`)
 
         const frameHeight = this.getContentHeight()
 
         this.$store.commit(namespace + '/' + SET_SCENE_HEIGHT, frameHeight)
 
-        //console.log(`resized scene (${this.lastSceneHeight} to ${frameHeight}) due to: ${this.$store.state.box.sceneHeightIsDirty}`)
         this.lastSceneHeight = frameHeight
 
       }
@@ -161,30 +161,57 @@ export default {
     },
     getContentHeight() {
       const activeSide = this.$el.children[0].querySelector(`.side.active`)
-      const content = activeSide.childNodes[0]
 
-      let height = content.clientHeight
+      let content
+      for (var i = 0; i < activeSide.childNodes.length; i++) {
+        if (activeSide.childNodes[i].nodeType === 1) {
+          break
+        }
+      }
 
-      const ss = window.getComputedStyle(activeSide)
-      const cs = window.getComputedStyle(content)
+      if (i < activeSide.childNodes.length) {
+        content = activeSide.childNodes[i]
+      }
 
-      height += parseInt(ss.getPropertyValue('padding-top')) || 0
-      height += parseInt(ss.getPropertyValue('padding-bottom')) || 0
-      height += parseInt(ss.getPropertyValue('margin-top')) || 0
-      height += parseInt(ss.getPropertyValue('margin-bottom')) || 0
-      height += parseInt(ss.getPropertyValue('border-width')) || 0
+      let height = activeSide.clientHeight
+      if (content) height = content.clientHeight
 
       height += activeSide.offsetTop
-      height += activeSide.childNodes[0].offsetTop
 
-      height += parseInt(cs.getPropertyValue('padding-top')) || 0
-      height += parseInt(cs.getPropertyValue('top')) || 0
-      height += parseInt(cs.getPropertyValue('padding-bottom')) || 0
-      height += parseInt(cs.getPropertyValue('margin-top')) || 0
-      height += parseInt(cs.getPropertyValue('margin-bottom')) || 0
-      height += parseInt(cs.getPropertyValue('border-width')) || 0
+      if (activeSide) {
+        const ss = window.getComputedStyle(activeSide)
+
+        height += parseInt(ss.getPropertyValue('padding-top')) || 0
+        height += parseInt(ss.getPropertyValue('padding-bottom')) || 0
+        height += parseInt(ss.getPropertyValue('margin-top')) || 0
+        height += parseInt(ss.getPropertyValue('margin-bottom')) || 0
+        height += parseInt(ss.getPropertyValue('border-width')) || 0
+
+
+        if (content) {
+
+          height += content.offsetTop
+
+          const cs = window.getComputedStyle(content)
+
+          height += parseInt(cs.getPropertyValue('padding-top')) || 0
+          height += parseInt(cs.getPropertyValue('top')) || 0
+          height += parseInt(cs.getPropertyValue('padding-bottom')) || 0
+          height += parseInt(cs.getPropertyValue('margin-top')) || 0
+          height += parseInt(cs.getPropertyValue('margin-bottom')) || 0
+          height += parseInt(cs.getPropertyValue('border-width')) || 0
+
+        }
+
+      }
 
       return height * 1.02 // allow for side being "elevated towards the camera"
+    },
+    invalidateSceneDimensions(triggerAlias) {
+      this.$nextTick(() => {
+        this.$store.commit(`${namespace}/${SET_SCENE_HEIGHT_IS_DIRTY}`, triggerAlias)
+        this.adjustSize()
+      })
     }
   }
 }
