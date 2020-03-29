@@ -86,7 +86,6 @@ export default {
     }
   },
   mounted() {
-    const vm = this
     this.$nextTick(() => {
       window.addEventListener('resize', () => this.invalidateSceneDimensions('window resized'))
     })
@@ -147,7 +146,7 @@ export default {
       const activeSide = this.$el.children[0].querySelector(`.side.active`)
 
       if (activeSide) {
-        console.log(`resizing scene due to: ${this.$store.state.box.sceneHeightIsDirty}`)
+        //console.log(`resizing scene due to: ${this.$store.state.box.sceneHeightIsDirty}`)
 
         const frameHeight = this.getContentHeight()
 
