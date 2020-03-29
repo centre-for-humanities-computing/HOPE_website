@@ -187,5 +187,24 @@
   .md img {
     max-width: 100%;
   }
-
+  @media only screen and (max-width: 720px) {
+    .body {
+      padding: 0;
+    }
+    .page {
+      width: 100vm;
+    }
+    .card {
+      margin: 0.2em;
+    }
+    .body {
+      padding: .2em;
+    }
+    .box .side {
+      width: 100vm;
+    }
+    .side > * {
+      padding: 1.3em 0.5em;
+    }
+  }
 </style>
