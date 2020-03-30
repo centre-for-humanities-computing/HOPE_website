@@ -25,12 +25,15 @@
     },
     computed: {
       processedMarkdown() {
-        return this.replaceImagesWithImageComponent(this.md)
+        let pmd = this.md
+        pmd = this.replaceImagesWithImageComponent(pmd)
+        pmd = this.convertImageAdjacentParagraphToImageTitle(pmd)
+        return pmd
       }
     },
     created() {
       let html = mit.render(this.processedMarkdown)
-      this.template = `<div class="md">${this.replaceImagesWithImageComponent(html)}</div>`
+      this.template = `<div class="md">${html}</div>`
     },
     methods: {
       replaceImagesWithImageComponent(md) {
@@ -45,6 +48,26 @@
             processed = processed.replace(match[0], component)
           }
           index++
+        } while (match)
+        return processed
+      },
+      convertImageAdjacentParagraphToImageTitle(md) {
+        const rxVImageTag = '(<vImage src="[^"]+" alt="[^"]+" :isOdd="(?:true|false)"/>)'
+        const rxText = '(.+)'
+        const rxAdjacentParagraph = new RegExp(`${rxVImageTag}\\s?${rxText}\\s{2,}`, 'g')
+        let processed = md
+        let match
+        do {
+          match = rxAdjacentParagraph.exec(md)
+          if (match) {
+            const substitute = `
+<div>
+  ${match[1]}
+  <div class="subtitle">${match[2]}</div>
+</div>
+`
+            processed = processed.replace(match[0], substitute)
+          }
         } while (match)
         return processed
       }

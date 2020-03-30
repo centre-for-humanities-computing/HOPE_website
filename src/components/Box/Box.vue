@@ -218,7 +218,7 @@ export default {
 
 <style scoped>
   .scene {
-    width: 100%;
+    width: 96vm;
   }
   .box {
     position: relative;

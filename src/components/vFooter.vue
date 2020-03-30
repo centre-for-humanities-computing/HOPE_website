@@ -1,7 +1,12 @@
 <template>
-  <div class="footer">
-    <div class="logo"></div>
-  </div>
+  <footer class="page__footer footer">
+    <object class="page__footer__logo" role="img" type="image/svg+xml" aria-label="The logo of Aarhus Universtity" tabindex="-1">
+      <p>The logo of Aarhus University.</p>
+    </object>
+    <object class="page__footer__seal" role="img" type="image/svg+xml" aria-label="The seal of Aarhus Universtity" tabindex="-1">
+      <p>The seal of Aarhus University. The seal depicts an anchor surrounded by two dolphins. The university motto and Latin name are written on the outline: Solidum petit in profundis - Universitas Arhusiensis.</p>
+    </object>
+  </footer>
 </template>
 
 <script>
@@ -11,18 +16,7 @@
 </script>
 
 <style scoped>
-  .footer {
-    position: relative;
-    bottom: 0;
-    height: 147px;
-    width: 100%;
-    background: rgb(19,36,86);
-    background: linear-gradient(180deg, rgba(19,36,86,1) 0%, rgba(0,7,30,1) 100%);
+  footer {
+    grid-template-areas: 'logo seal'!important;
   }
-  .logo {
-    background-image: url(../assets/bss_logo.png);
-    background-repeat: no-repeat;
-    height: 100%;
-  }
-
 </style>

@@ -4,19 +4,29 @@
     :class="faceClasses"
     :style="faceStyle"
   >
-    <router-view :name="face"/>
+    <div class="page">
+      <vNavigation class="page__header"/>
+      <router-view :name="face"/>
+      <vFooter></vFooter>
+    </div>
     <span
       v-if="debug"
       style="color: white; font-size: 72px"
     >{{ face }}</span>
-    <div class="overlay"></div>
+    <div
+      v-if="!isTargetFace"
+      class="overlay"></div>
   </div>
 </template>
 
 <script>
 import { SET_SCENE_HEIGHT_IS_DIRTY } from '../../modules/box/types'
+import vFooter from '../vFooter'
 export default {
   name: 'Side',
+  components: {
+    vFooter
+  },
   props: {
     face: {
       type: String,
@@ -161,15 +171,12 @@ export default {
     height: 100%;
     width: 100%;
     z-index: 100;
-    background-color: rgba(00, 34, 65, 0.7);
+    background-color: rgba(00, 34, 65, 0.5);
   }
   .side.active > * {
     opacity: 1;
   }
-  .side.active > .overlay {
-    opacity: 0;
-  }
   .side.opposite > * {
-    opacity: 0.2
+    opacity: 0.3
   }
 </style>

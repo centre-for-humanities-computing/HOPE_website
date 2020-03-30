@@ -1,1 +1,2 @@
 export const SET_ACTIVE_ROUTE = 'SET_ACTIVE_ROUTE'
+export const SET_LANGUAGE = 'SET_LANGUAGE'

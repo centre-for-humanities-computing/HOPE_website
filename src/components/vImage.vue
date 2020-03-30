@@ -8,7 +8,6 @@
 </template>
 
 <script>
-  import { SET_SCENE_HEIGHT_IS_DIRTY } from "../modules/box/types"
   export default {
     name: "vImage",
     props: {
