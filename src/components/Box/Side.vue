@@ -4,14 +4,13 @@
     :class="faceClasses"
     :style="faceStyle"
   >
-      <router-view
-        :name="face"
-      />
-      <span
-        v-if="debug"
-        style="color: white; font-size: 72px"
-      >{{ face }}</span>
-    </div>
+    <router-view :name="face"/>
+    <span
+      v-if="debug"
+      style="color: white; font-size: 72px"
+    >{{ face }}</span>
+    <div class="overlay"></div>
+  </div>
 </template>
 
 <script>
@@ -155,10 +154,22 @@ export default {
     min-height: 100px;
     min-width: 100px;
   }
+  .side .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(00, 34, 65, 0.7);
+  }
   .side.active > * {
     opacity: 1;
   }
+  .side.active > .overlay {
+    opacity: 0;
+  }
   .side.opposite > * {
-    opacity: 0.1
+    opacity: 0.2
   }
 </style>

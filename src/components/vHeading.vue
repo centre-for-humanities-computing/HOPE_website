@@ -6,19 +6,8 @@
     <h1
       class="title"
       v-if="level === 1">
-      {{title}}
+      {{title}}{{subtitle || ''}}
     </h1>
-    <h2
-      class="title"
-      v-else-if="level === 2">
-      {{title}}
-    </h2>
-    <span
-      v-if="subtitle"
-      class="subtitle"
-    >
-      {{subtitle}}
-    </span>
   </div>
 </template>
 

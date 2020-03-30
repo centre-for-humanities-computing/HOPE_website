@@ -60,7 +60,7 @@
 
           const columnWidth = img.parentElement.offsetWidth
           const isPanorama = img.clientWidth >= 2 * img.clientHeight
-          const imageCanCoverColumn = img.clientWidth >= 0.9 * columnWidth
+          const imageCanCoverColumn = img.clientWidth >= columnWidth
           const fitToColumn = isPanorama && imageCanCoverColumn
           if (fitToColumn) {
             img.style.height = '100%'

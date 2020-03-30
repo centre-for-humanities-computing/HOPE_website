@@ -1,12 +1,16 @@
 <template>
   <div class="publications">
-    <div class="list">
-      <div
-        v-for="(entry, index) in file"
-        :key="index"
-        class="item"
-      >
-        <vAPACitation :citation="entry"></vAPACitation>
+    <div class="page__content theme--normal">
+      <div class="page__content__block">
+        <div class="list">
+          <div
+            v-for="(entry, index) in file"
+            :key="index"
+            class="item"
+          >
+            <vAPACitation :citation="entry"></vAPACitation>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -34,7 +38,7 @@ export default {
 
 <style scoped>
   .publications {
-    text-align: center;
+    text-align: left;
     min-width: 100%;
   }
 </style>

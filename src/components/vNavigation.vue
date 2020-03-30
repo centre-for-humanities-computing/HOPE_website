@@ -1,20 +1,23 @@
 <template>
-  <div class="navigation">
-    <div class="logo"></div>
-    <div class="links">
-      <div
-        class="item light"
-        :class="{dark: index === activeIndex}"
-        v-for="(route, index) in menuRoutes"
-        :key="index"
-      >
-        <div
-          class="link"
+  <div class="nav nav--site-nav theme--dark">
+    <h1 class="nav__home">
+      <a class="nav__home__title" href="#">
+        HOPE Project
+      </a>
+    </h1>
+    <div class="nav__site">
+      <div class="nav__items">
+        <a
+          class="nav__item"
+          :class="{'nav__item--active': index === activeIndex}"
+          v-for="(route, index) in menuRoutes"
+          :key="index"
           @click="push(route.path)"
         >
-          <span>{{route.title}}</span>
-        </div>
+          {{route.title}}
+        </a>
       </div>
+      <button class="nav__toggle">Menu</button>
     </div>
   </div>
 </template>
@@ -51,6 +54,7 @@ export default {
 </script>
 
 <style scoped>
+  /*
   .navigation {
     display: flex;
     width: 100%;
@@ -88,5 +92,5 @@ export default {
       margin: 4px;
     }
   }
-
+*/
 </style>

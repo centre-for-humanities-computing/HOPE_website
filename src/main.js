@@ -6,6 +6,7 @@ import moment from 'moment'
 import _ from 'lodash'
 import AsyncComputed from 'vue-async-computed'
 import 'vue-material-design-icons/styles.css';
+import './assets/AUStyle.css';
 
 Vue.config.productionTip = false
 

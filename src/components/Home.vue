@@ -1,25 +1,32 @@
 <template>
   <div class="home">
-    <vHeading
-      title="HOPE - How Democracies Cope with COVID19"
-      subtitle="A Data-Driven Approach"
-    ></vHeading>
-    <div class="content">
-      <vRepoFile
-        class="card body"
-        filePath="HOPE/one.md"></vRepoFile>
-      <vRepoFile
-        class="card body"
-        filePath="HOPE/two.md"></vRepoFile>
-      <vRepoFile
-        class="card body"
-        filePath="HOPE/three.md"></vRepoFile>
-      <vRepoFile
-        class="card body"
-        filePath="HOPE/four.md"></vRepoFile>
+    <div class="page__content theme--normal">
+      <div class="page__content__block">
+        <h1>
+            HOPE - How Democracies Cope with COVID19
+          <strong class="u-no-wrap">
+            A Data-Driven Approach
+          </strong>
+        </h1>
+        <div
+          id="homeContent"
+          class="content">
+          <vRepoFile
+            class="box theme--background-secondary"
+            filePath="HOPE/one.md"></vRepoFile>
+          <vRepoFile
+            class="box theme--background-secondary"
+            filePath="HOPE/two.md"></vRepoFile>
+          <vRepoFile
+            class="box theme--background-secondary"
+            filePath="HOPE/three.md"></vRepoFile>
+          <vRepoFile
+            class="box theme--background-secondary"
+            filePath="HOPE/four.md"></vRepoFile>
+        </div>
+      </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -31,6 +38,9 @@
   .content {
     display: grid;
     grid-template-columns: auto auto;
+  }
+  .content > * {
+    margin: 4px;
   }
   @media only screen and (max-width: 720px) {
     .content {

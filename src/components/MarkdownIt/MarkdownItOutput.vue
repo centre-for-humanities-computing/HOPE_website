@@ -30,7 +30,6 @@
     },
     created() {
       let html = mit.render(this.processedMarkdown)
-
       this.template = `<div class="md">${this.replaceImagesWithImageComponent(html)}</div>`
     },
     methods: {

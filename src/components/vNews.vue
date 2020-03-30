@@ -1,16 +1,20 @@
 <template>
   <div class="news">
-    <vHeading
-      title="News"
-      :level="1"></vHeading>
-    <div
-      v-if="file"
-      class="feed">
-      <vPost
-        v-for="(articleName, index) in articleNames"
-        :key="index"
-        :filePath="articleName"
-      ></vPost>
+    <div class="page__content theme--normal">
+      <div class="page__content__block">
+            <vHeading
+          title="News"
+          :level="1"></vHeading>
+        <div
+          v-if="file"
+          class="feed">
+          <vPost
+            v-for="(articleName, index) in articleNames"
+            :key="index"
+            :filePath="articleName"
+          ></vPost>
+        </div>
+      </div>
     </div>
   </div>
 </template>
