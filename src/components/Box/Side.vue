@@ -165,7 +165,7 @@ export default {
     height: 100%;
     width: 100%;
     z-index: 100;
-    background-color: rgba(00, 34, 65, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
   }
   .side.active > * {
     opacity: 1;
