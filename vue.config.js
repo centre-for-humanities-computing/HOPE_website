@@ -24,5 +24,5 @@ module.exports = {
     disableHostCheck: true
   },
   outputDir: path.resolve(__dirname, "./docs"),
-  publicPath: process.env.NODE_ENV === '/' //'production' ? '/HOPE_website/' : '/' // for github Pages
+  publicPath: '/' //process.env.NODE_ENV === 'production' ? '/HOPE_website/' : '/' // for github Pages
 }
