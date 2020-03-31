@@ -15,4 +15,4 @@ as opposed to
   publicPath: '/' // local server. no offset
 ```
 
-end-user editable content is in the HOPE_website_content repository
+end-user editable content is in the [HOPE_website_content repository](https://github.com/centre-for-humanities-computing/HOPE_website_content)
