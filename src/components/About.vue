@@ -1,10 +1,8 @@
 <template>
-  <div class="page__content theme--normal">
-    <div class="page__content__block">
+    <div class="about">
       <vRepoFile filePath="aboutUs/theProject.md"></vRepoFile>
       <vPeople filePath="aboutUs/people.json"></vPeople>
     </div>
-  </div>
 </template>
 
 <script>

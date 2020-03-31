@@ -1,30 +1,26 @@
 <template>
   <div class="home">
-    <div class="page__content theme--normal">
-      <div class="page__content__block">
-        <h1>
-            HOPE - How Democracies Cope with COVID19
-          <strong class="u-no-wrap">
-            A Data-Driven Approach
-          </strong>
-        </h1>
-        <div
-          id="homeContent"
-          class="content">
-          <vRepoFile
-            class="box theme--background-secondary"
-            filePath="HOPE/one.md"></vRepoFile>
-          <vRepoFile
-            class="box theme--background-secondary"
-            filePath="HOPE/two.md"></vRepoFile>
-          <vRepoFile
-            class="box theme--background-secondary"
-            filePath="HOPE/three.md"></vRepoFile>
-          <vRepoFile
-            class="box theme--background-secondary"
-            filePath="HOPE/four.md"></vRepoFile>
-        </div>
-      </div>
+    <h1>
+        HOPE - How Democracies Cope with COVID19
+      <strong class="u-no-wrap">
+        A Data-Driven Approach
+      </strong>
+    </h1>
+    <div
+      id="homeContent"
+      class="content">
+      <vRepoFile
+        class="box theme--background-secondary"
+        filePath="HOPE/one.md"></vRepoFile>
+      <vRepoFile
+        class="box theme--background-secondary"
+        filePath="HOPE/two.md"></vRepoFile>
+      <vRepoFile
+        class="box theme--background-secondary"
+        filePath="HOPE/three.md"></vRepoFile>
+      <vRepoFile
+        class="box theme--background-secondary"
+        filePath="HOPE/four.md"></vRepoFile>
     </div>
   </div>
 </template>

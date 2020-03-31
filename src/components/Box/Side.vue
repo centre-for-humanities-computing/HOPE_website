@@ -4,10 +4,8 @@
     :class="faceClasses"
     :style="faceStyle"
   >
-    <div class="page">
-      <vNavigation class="page__header"/>
+    <div class="page__content__block">
       <router-view :name="face"/>
-      <vFooter></vFooter>
     </div>
     <span
       v-if="debug"
@@ -21,12 +19,8 @@
 
 <script>
 import { SET_SCENE_HEIGHT_IS_DIRTY } from '../../modules/box/types'
-import vFooter from '../vFooter'
 export default {
   name: 'Side',
-  components: {
-    vFooter
-  },
   props: {
     face: {
       type: String,
@@ -177,6 +171,6 @@ export default {
     opacity: 1;
   }
   .side.opposite > * {
-    opacity: 0.3
+    opacity: 0.5;
   }
 </style>

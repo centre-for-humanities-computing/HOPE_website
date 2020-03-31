@@ -1,6 +1,5 @@
 <template>
   <div class="publications">
-    <div class="page__content theme--normal">
       <div class="page__content__block">
         <div class="list">
           <div
@@ -10,7 +9,6 @@
           >
             <vAPACitation :citation="entry"></vAPACitation>
           </div>
-        </div>
       </div>
     </div>
   </div>

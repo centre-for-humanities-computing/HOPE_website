@@ -1,46 +1,30 @@
 <template>
-  <div
-    id="app"
-    :style="{fontSize: fontSize + '%'}"
-  >
-
-    <div
-      class="page__content__block page__content__block--no-padding"
-    >
-      <box />
+  <div id="app">
+    <div class="page" id="page">
+      <vNavigation class="page__header"/>
+      <div class="page__content theme--normal" id="content">
+        <box />
+      </div>
+      <vFooter/>
     </div>
-
   </div>
 </template>
 
 <script>
   import Box from './components/Box'
+  import vFooter from './components/vFooter'
   let vm
   export default {
     name: 'App',
     components: {
       Box,
-    },
-    data() {
-      return {
-        fontSize: 100
-      }
-    },
-    computed: {
-      minFontSize() {
-        return this.$store.state.minFontSize
-      },
-      maxFontSize() {
-        return this.$store.state.maxFontSize
-      }
+      vFooter,
     },
     mounted() {
       vm = this
       this.$nextTick(function () {
         window.addEventListener('resize', vm.trackWindowSize)
-        window.addEventListener('resize', vm.adjustFontSize)
         vm.trackWindowSize()
-        vm.adjustFontSize()
       })
     },
     methods: {
@@ -48,15 +32,6 @@
         this.windowWidth = window.innerWidth
         this.windowHeight = window.innerHeight
       },
-      adjustFontSize() {
-        const nominalSize = 100
-        const thresholdWidth = 800
-        if (window.innerWidth < thresholdWidth) {
-          this.fontSize = Math.min(Math.max(this.minFontSize, this.windowWidth / 6), nominalSize)
-        } else {
-          this.fontSize = Math.min(Math.max(nominalSize, this.windowHeight / 10), this.maxFontSize)
-        }
-      }
     }
   }
 </script>
@@ -64,10 +39,6 @@
 <style>
   body {
     background-color: #4d5760;
-  }
-  #app {
-    width: 100%;
-    max-width: 1400px;
   }
   .shadow {
     box-shadow: 0 0 1em 0 rgba(40,40,40,0.5);
@@ -78,5 +49,7 @@
     color: #262626;
     box-shadow: .12em .12em .29em 0 rgba(40,40,50,0.3);
   }
-
+  .page__content__block {
+    background-color: white!important;
+  }
 </style>
