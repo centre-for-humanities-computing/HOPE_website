@@ -24,23 +24,27 @@ export default {
           return response.data
         })
         .catch(error => {
-          let message
-          if (error.message === 'Request failed with status code 404') {
-            message = `\nArticle not found.`
+          if (this.hideTillLoaded) {
+            console.log(error)
           } else {
-            message = '\n' + error
+            let message
+            if (error.message === 'Request failed with status code 404') {
+              message = `\nArticle not found.`
+            } else {
+              message = '\n' + error
+            }
+            let messageHTML = `
+  <div class="error">
+    <div class="address"></div>
+      <span class="method">GET</span>
+      <span class="url">${repoUrl}${this.filePath}</span>
+    </div>
+    <div class="message">
+      ${message}
+    </div>
+  `
+            return messageHTML
           }
-          let messageHTML = `
-<div class="error">
-  <div class="address"></div>
-    <span class="method">GET</span>
-    <span class="url">${repoUrl}${this.filePath}</span>
-  </div>
-  <div class="message">
-    ${message}
-  </div>
-`
-          return messageHTML
         })
     }
   }
