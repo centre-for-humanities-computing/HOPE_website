@@ -15,6 +15,9 @@
           @click="push(route.path)"
         >
           {{route.title}}
+          <span
+            v-if="route.comingSoon"
+            class="tag">coming soon...</span>
         </a>
       </div>
       <button class="nav__toggle">Menu</button>
@@ -54,5 +57,15 @@ export default {
 </script>
 
 <style scoped>
-
+  .tag {
+    position: absolute;
+    margin-left: .5em;
+    z-index: 1;
+    font-size: 60%;
+    background-color: #ffffd1;
+    color: black;
+    border-radius: 1em;
+    padding: 0 .5em;
+    transform: rotate(30deg);
+  }
 </style>

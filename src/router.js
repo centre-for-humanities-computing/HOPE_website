@@ -32,6 +32,7 @@ export const routes = [
     path: '/dashboard',
     title: 'Dashboard',
     inMenu: true,
+    comingSoon: true,
     component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
   },
   {
