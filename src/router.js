@@ -13,47 +13,46 @@ export const routes = [
   {
     path: '/',
     title: 'HOPE',
-    icon: 'home',
     inMenu: true,
     component: Home
   },
   {
     path: '/about',
     title: 'About',
-    icon: 'info',
     inMenu: true,
     component: () => import(/* webpackChunkName: "search" */ './components/About.vue')
   },
   {
     path: '/news',
     title: 'News',
-    icon: 'radio',
     inMenu: true,
     component: () => import(/* webpackChunkName: "search" */ './components/vNews.vue')
   },
   {
+    path: '/dashboard',
+    title: 'Dashboard',
+    inMenu: true,
+    component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
+  },
+  {
     path: '/publications',
     title: 'Publications',
-    icon: 'bookmark',
     inMenu: true,
     component: () => import(/* webpackChunkName: "search" */ './components/vPublications.vue')
   },
   {
     path: '/coronaCrisisInDK',
     title: 'CoronaCrisisInDK',
-    icon: 'track_changes',
     component: () => import(/* webpackChunkName: "search" */ './components/CoronaCrisisInDK.vue')
   },
   {
     path: '/coronaKrisenIDK',
     title: 'CoronaKrisenIDK',
-    icon: 'track_changes',
     component: () => import(/* webpackChunkName: "search" */ './components/CoronaKrisenIDK.vue')
   },
   {
     path: '/md',
     title: 'MarkdownIt Tests',
-    icon: 'spellcheck',
     inMenu: false,
     component: MarkdownItTests
   },
