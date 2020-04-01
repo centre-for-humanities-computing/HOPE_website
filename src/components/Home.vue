@@ -17,10 +17,14 @@
         filePath="HOPE/two.md"></vRepoFile>
       <vRepoFile
         class="box theme--background-secondary"
-        filePath="HOPE/three.md"></vRepoFile>
+        filePath="HOPE/three.md"
+        :hideTillLoaded="true"
+      ></vRepoFile>
       <vRepoFile
         class="box theme--background-secondary"
-        filePath="HOPE/four.md"></vRepoFile>
+        filePath="HOPE/four.md"
+        :hideTillLoaded="true"
+      ></vRepoFile>
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <markdown-it-output v-if="file" :md="file"></markdown-it-output>
-  <vSpinner v-else></vSpinner>
+  <vSpinner v-else-if="!hideTillLoaded"></vSpinner>
 </template>
 
 <script>
@@ -13,7 +13,13 @@
     },
     mixins: [
       repoFileMixin
-    ]
+    ],
+    props: {
+      hideTillLoaded: {
+        type: Boolean,
+        default: false
+      }
+    }
   }
 </script>
 
