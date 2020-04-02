@@ -1,7 +1,7 @@
 secrets/
 .idea/
 *.service
-
+docs/
 .DS_Store
 
 # Logs
