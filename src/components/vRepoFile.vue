@@ -1,6 +1,10 @@
 <template>
-  <markdown-it-output v-if="file" :md="file"></markdown-it-output>
-  <vSpinner v-else-if="!hideTillLoaded"></vSpinner>
+  <div
+    v-if="file || !hideTillLoaded"
+  >
+    <markdown-it-output v-if="file" :md="file"></markdown-it-output>
+    <vSpinner v-else-if="!hideTillLoaded"></vSpinner>
+  </div>
 </template>
 
 <script>
