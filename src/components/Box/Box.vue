@@ -1,31 +1,40 @@
 <template>
-  <div
-    class="scene"
-    :style="sceneStyle"
-  >
+  <div class="boxRouter">
     <div
-      class="box"
-      :style="boxStyle"
+      class="scene"
+      :style="sceneStyle"
     >
-      <side face="front" />
-      <side face="back" />
-      <side face="right" />
-      <side face="left" />
-      <side face="top" />
-      <side face="bottom" />
+      <div
+        class="box"
+        :style="boxStyle"
+      >
+        <side face="front" />
+        <side face="back" />
+        <side face="right" />
+        <side face="left" />
+        <side face="top" />
+        <side face="bottom" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { SET_SCENE_WIDTH, SET_SCENE_HEIGHT, SET_BOX_WIDTH, SET_BOX_DEPTH, SET_SCENE_HEIGHT_IS_DIRTY } from '../../modules/box/types'
+  import {
+    SET_SCENE_WIDTH,
+    SET_SCENE_HEIGHT,
+    SET_BOX_WIDTH,
+    SET_BOX_DEPTH,
+    SET_SCENE_HEIGHT_IS_DIRTY,
+    SET_BOX_HEIGHT
+  } from '../../modules/box/types'
 import Side from './Side'
 
 const namespace = 'box'
 export default {
   name: 'Box',
   components: {
-    Side
+    Side,
   },
   data() {
     return {
@@ -158,6 +167,12 @@ export default {
 
       this.$store.commit(namespace + '/' + SET_SCENE_HEIGHT_IS_DIRTY, false)
     },
+    getActiveDimension(sideEl) {
+      let dimension = 'height'
+      let faceName = sideEl.className.filter(n => n.indexOf(['top', 'bottom', 'left', 'right', 'front', 'back']) >= 0)
+      if (['top', 'bottom'].indexOf(faceName) >= 0) dimension = 'depth'
+      return dimension
+    },
     getContentHeight() {
       const activeSide = this.$el.children[0].querySelector(`.side.active`)
 
@@ -185,7 +200,6 @@ export default {
         height += parseInt(ss.getPropertyValue('margin-top')) || 0
         height += parseInt(ss.getPropertyValue('margin-bottom')) || 0
         height += parseInt(ss.getPropertyValue('border-width')) || 0
-
 
         if (content) {
 

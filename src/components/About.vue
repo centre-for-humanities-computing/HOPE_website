@@ -16,4 +16,7 @@
 </script>
 
 <style scoped>
+  .about {
+    height: 100%;
+  }
 </style>

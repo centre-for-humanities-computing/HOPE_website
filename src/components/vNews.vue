@@ -50,6 +50,7 @@
 <style scoped>
   .news {
     width: 100%;
+    height: 100%;
   }
   .feed .post {
     margin-block-end: 1em;
