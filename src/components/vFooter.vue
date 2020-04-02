@@ -18,5 +18,6 @@
 <style scoped>
   footer {
     grid-template-areas: 'logo seal'!important;
+    background-color: var(--color-background);
   }
 </style>

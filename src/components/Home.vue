@@ -35,9 +35,6 @@
   }
 </script>
 <style scoped>
-  .home {
-    width: 100%;
-  }
   .content {
     display: grid;
     grid-template-columns: auto auto;
