@@ -52,5 +52,6 @@
   .page__content__block,
   .page__content {
     background-color: white!important;
+    min-height: 100%;
   }
 </style>
