@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard">
-    <iframe src="localhost:1234" frameborder="0"></iframe>
+    dash
+    <iframe src="localhost:8888/" frameborder="0"></iframe>
   </div>
 </template>
 

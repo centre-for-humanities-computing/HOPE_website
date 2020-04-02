@@ -11,9 +11,10 @@
       v-if="debug"
       style="color: white; font-size: 72px"
     >{{ face }}</span>
-    <div
+    <!--div
       v-if="!isTargetFace"
-      class="overlay"></div>
+      class="overlay">
+    </div-->
   </div>
 </template>
 

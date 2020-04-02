@@ -12,54 +12,64 @@ Vue.use(Router)
 export const routes = [
   {
     path: '/',
-    title: 'HOPE',
+    name: 'HOPE',
     inMenu: true,
     component: Home
   },
   {
     path: '/about',
-    title: 'About',
+    name: 'About',
     inMenu: true,
     component: () => import(/* webpackChunkName: "search" */ './components/About.vue')
   },
   {
     path: '/news',
-    title: 'News',
+    name: 'News',
     inMenu: true,
     component: () => import(/* webpackChunkName: "search" */ './components/vNews.vue')
   },
   {
     path: '/dashboard',
-    title: 'Dashboard',
+    name: 'Dashboard',
     inMenu: true,
     comingSoon: true,
     component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
   },
   {
     path: '/publications',
-    title: 'Publications',
+    name: 'Publications',
     inMenu: true,
     component: () => import(/* webpackChunkName: "search" */ './components/vPublications.vue')
   },
   {
     path: '/coronaCrisisInDK',
-    title: 'CoronaCrisisInDK',
+    name: 'CoronaCrisisInDK',
     component: () => import(/* webpackChunkName: "search" */ './components/CoronaCrisisInDK.vue')
   },
   {
     path: '/coronaKrisenIDK',
-    title: 'CoronaKrisenIDK',
+    name: 'CoronaKrisenIDK',
     component: () => import(/* webpackChunkName: "search" */ './components/CoronaKrisenIDK.vue')
   },
   {
+    path: '/bss',
+    name: 'BSS',
+    beforeEnter() {location.href='https://bss.au.dk/en/'}
+  },
+  {
+    path: '/ps',
+    name: 'PS',
+    beforeEnter() {location.href='https://ps.au.dk/en/'}
+  },
+  {
     path: '/md',
-    title: 'MarkdownIt Tests',
+    name: 'MarkdownIt Tests',
     inMenu: false,
     component: MarkdownItTests
   },
   {
     path: '*',
-    title: 'notFound',
+    name: 'notFound',
     component: () => import('./components/notFound.vue')
   }
 ]
@@ -71,6 +81,7 @@ const pathFaces = {
   '/about': 'top',
   '/news': 'right',
   '/publications': 'back',
+  '/dashboard': 'bottom',
   '/coronaCrisisInDK': 'left',
   '/coronaKrisenIDK': 'bottom',
   '/md': 'bottom',
@@ -103,13 +114,14 @@ function setToFaceComponents(to, from, toFace) {
 function findRenderedViewFace(to, from) {
   let routeViews = from.matched[0]
   let componentView
-  if (routeViews) {
-    routeViews = routeViews.components
-    for (let view in routeViews) {
-      // console.log('routeViews[view]', routeViews[view])
-      // console.log('to', to)
 
-      if (routeViews[view].title.toLowerCase() === to.path) { // todo: smell: obscure dependency of title and route
+  if (routeViews) {
+    const components = routeViews.components
+
+    for (let view in components) {
+      //console.log('view', view, components.view)
+
+      if (components[view].name.toLowerCase() === to.path) { // todo: smell: obscure dependency of route name and path
         componentView = view
       }
     }
@@ -149,6 +161,9 @@ function mapViewsToBoxFaces(to, from, next) {
   store.commit(actions.SET_ACTIVE_ROUTE, to.path)
   next()
 }
+function prepareNavigation(from, to, next) {
+  mapViewsToBoxFaces(from, to , next)
+}
 
-router.beforeEach(mapViewsToBoxFaces)
+router.beforeEach(prepareNavigation)
 export default router

@@ -1,8 +1,6 @@
 <template>
   <div class="news">
-    <vHeading
-      title="News"
-      :level="1"></vHeading>
+    <h1>News</h1>
     <div
       v-if="file"
       class="feed">

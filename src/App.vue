@@ -54,4 +54,8 @@
     background-color: white!important;
     min-height: 100%;
   }
+  a {
+    text-decoration: none!important;
+    cursor: pointer;
+  }
 </style>
