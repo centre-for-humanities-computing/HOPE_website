@@ -1,7 +1,6 @@
 <template>
   <footer class="footer">
     <div class="page__footer">
-
       <object class="page__footer__logo" role="img" type="image/svg+xml" aria-label="The logo of Aarhus Universtity" tabindex="-1">
         <p>The logo of Aarhus University.</p>
       </object>
@@ -20,7 +19,9 @@
 
 <style scoped>
   footer {
-    grid-template-areas: 'logo seal'!important;
     background-color: var(--color-background);
+  }
+  .page__footer {
+    grid-template-areas: 'logo seal'!important;
   }
 </style>
