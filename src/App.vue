@@ -49,6 +49,7 @@
     color: #262626;
     box-shadow: .12em .12em .29em 0 rgba(40,40,50,0.3);
   }
+  .page__content__block,
   .page__content {
     background-color: white!important;
   }
