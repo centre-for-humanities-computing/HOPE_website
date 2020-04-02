@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     dash
-    <iframe src="localhost:8888/" frameborder="0"></iframe>
+    <iframe src="localhost:8889/" frameborder="0"></iframe>
   </div>
 </template>
 
