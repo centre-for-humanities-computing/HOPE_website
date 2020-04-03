@@ -38,7 +38,8 @@ export const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     inMenu: true,
-    component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
+    beforeEnter() {location.href='https://hope-project.dk/dashboard'}
+    //component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
   },
   {
     path: '/coronaCrisisInDK',
@@ -80,7 +81,7 @@ const pathFaces = {
   '/about': 'front',
   '/news': 'front',
   '/publications': 'front',
-  '/dashboard': 'left',
+  '/dashboard': 'right',
   '/coronaCrisisInDK': 'front',
   '/coronaKrisenIDK': 'front',
   '/md': 'bottom',

@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <iframe
-      src="https://hope-project.dk/dashboard"
+      :src="src"
       frameborder="0"
       scrolling="no"
       @load="resizeIframe"
@@ -16,8 +16,14 @@
     data() {
       return {
         iframe: {
+          src: '',
           loaded: false
         }
+      }
+    },
+    computed: {
+      src() {
+        return 'https://www.google.com/search?q=%http://hope-project.dk/dashboard&btnI=Im+Feeling+Lucky'
       }
     },
     methods: {
