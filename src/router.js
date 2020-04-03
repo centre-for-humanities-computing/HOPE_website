@@ -42,16 +42,6 @@ export const routes = [
     //component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
   },
   {
-    path: '/coronaCrisisInDK',
-    name: 'CoronaCrisisInDK',
-    component: () => import(/* webpackChunkName: "search" */ './components/CoronaCrisisInDK.vue')
-  },
-  {
-    path: '/coronaKrisenIDK',
-    name: 'CoronaKrisenIDK',
-    component: () => import(/* webpackChunkName: "search" */ './components/CoronaKrisenIDK.vue')
-  },
-  {
     path: '/bss',
     name: 'BSS',
     beforeEnter() {location.href='https://bss.au.dk/en/'}
@@ -81,10 +71,8 @@ const pathFaces = {
   '/about': 'front',
   '/news': 'front',
   '/publications': 'front',
-  '/dashboard': 'right',
-  '/coronaCrisisInDK': 'front',
-  '/coronaKrisenIDK': 'front',
-  '/md': 'bottom',
+  '/dashboard': 'front',
+  '/md': 'top',
 }
 
 function getComponent(route) {
