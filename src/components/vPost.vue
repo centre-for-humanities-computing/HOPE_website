@@ -1,5 +1,8 @@
 <template>
-  <div class="post">
+  <div
+    :id="fileName"
+    class="post"
+  >
     <vRepoFile :filePath="filePath"></vRepoFile>
   </div>
 </template>

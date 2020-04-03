@@ -12,6 +12,13 @@ export default {
       repoUrl: 'https://raw.githubusercontent.com/centre-for-humanities-computing/HOPE_website_content/master'
     }
   },
+  computed: {
+    fileName() {
+      const parts = this.filePath.split('/')
+      const filename = parts[parts.length -1].split('.')[0]
+      return filename
+    }
+  },
   asyncComputed: {
     file() {
       let repoUrl = this.repoUrl

@@ -29,13 +29,6 @@ export const routes = [
     component: () => import(/* webpackChunkName: "search" */ './components/vNews.vue')
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    inMenu: true,
-    comingSoon: true,
-    component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
-  },
-  {
     path: '/publications',
     name: 'Publications',
     inMenu: true,
@@ -62,6 +55,13 @@ export const routes = [
     beforeEnter() {location.href='https://ps.au.dk/en/'}
   },
   {
+    path: '/dashboard',
+    name: 'Dashboard',
+    inMenu: true,
+    comingSoon: true,
+    component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
+  },
+  {
     path: '/md',
     name: 'MarkdownIt Tests',
     inMenu: false,
@@ -78,14 +78,13 @@ const router = new Router({routes})
 const boxFaces = ['front', 'back', 'right', 'left', 'top', 'bottom']
 const pathFaces = {
   '/': 'front',
-  '/about': 'top',
-  '/news': 'right',
-  '/publications': 'back',
-  '/dashboard': 'bottom',
-  '/coronaCrisisInDK': 'left',
-  '/coronaKrisenIDK': 'bottom',
+  '/about': 'front',
+  '/news': 'front',
+  '/publications': 'front',
+  '/dashboard': 'left',
+  '/coronaCrisisInDK': 'front',
+  '/coronaKrisenIDK': 'front',
   '/md': 'bottom',
-  '/search': 'bottom',
 }
 
 function getComponent(route) {

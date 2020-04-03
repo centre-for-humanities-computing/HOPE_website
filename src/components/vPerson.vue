@@ -56,7 +56,7 @@
     computed: {
       portraitStyle() {
         return {
-          backgroundImage: `url(${this.person.imageUrl})`,
+          backgroundImage: `url(${this.person.imageUrl || 'https://upload.wikimedia.org/wikipedia/commons/9/9a/No_avatar.png'})`,
           backgroundPosition: `${this.person.imagePosX || 'center'} ${this.person.imagePosY || 'center'}`
         }
       }
