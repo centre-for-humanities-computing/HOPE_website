@@ -35,6 +35,12 @@ export const routes = [
     component: () => import(/* webpackChunkName: "search" */ './components/vPublications.vue')
   },
   {
+    path: '/dashboard',
+    name: 'Dashboard',
+    inMenu: true,
+    component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
+  },
+  {
     path: '/coronaCrisisInDK',
     name: 'CoronaCrisisInDK',
     component: () => import(/* webpackChunkName: "search" */ './components/CoronaCrisisInDK.vue')
@@ -53,13 +59,6 @@ export const routes = [
     path: '/ps',
     name: 'PS',
     beforeEnter() {location.href='https://ps.au.dk/en/'}
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    inMenu: true,
-    comingSoon: true,
-    component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
   },
   {
     path: '/md',
