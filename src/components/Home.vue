@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <h1>
-        HOPE - How Democracies Cope with COVID19
       <strong class="u-no-wrap">
-        A Data-Driven Approach
+        HOPE - How Democracies Cope with COVID19
       </strong>
+      A Data-Driven Approach
     </h1>
     <div
       id="homeContent"
