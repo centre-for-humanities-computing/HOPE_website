@@ -3,7 +3,9 @@
     <div class="page" id="page">
       <vNavigation class="page__header"/>
       <div class="page__content theme--normal" id="content">
-        <box />
+        <div class="page__content__block">
+          <router-view name="front"/>
+        </div>
       </div>
       <vFooter/>
     </div>
@@ -11,13 +13,11 @@
 </template>
 
 <script>
-  import Box from './components/Box'
   import vFooter from './components/vFooter'
   let vm
   export default {
     name: 'App',
     components: {
-      Box,
       vFooter,
     },
     mounted() {
@@ -52,7 +52,6 @@
   .page__content__block,
   .page__content {
     background-color: white!important;
-    min-height: 100%;
   }
   a {
     text-decoration: none!important;

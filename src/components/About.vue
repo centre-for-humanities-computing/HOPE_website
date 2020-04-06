@@ -1,7 +1,9 @@
 <template>
     <div class="about">
-      <vRepoFile filePath="aboutUs/theProject.md"></vRepoFile>
-      <vPeople filePath="aboutUs/people.json"></vPeople>
+      <div class="items">
+        <vRepoFile filePath="aboutUs/theProject.md"></vRepoFile>
+        <vPeople filePath="aboutUs/people.json"></vPeople>
+      </div>
     </div>
 </template>
 
@@ -18,5 +20,11 @@
 <style scoped>
   .about {
     height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .items {
+    max-width: 38rem;
   }
 </style>

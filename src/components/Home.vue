@@ -45,7 +45,7 @@
   .content > * {
     margin: 4px;
   }
-  @media only screen and (max-width: 720px) {
+  @media only screen and (max-width: 860px) {
     .content {
       grid-template-columns: auto;
     }

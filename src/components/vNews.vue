@@ -46,10 +46,12 @@
 
 <style scoped>
   .news {
-    width: 100%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .feed .post {
+    max-width: 38rem;
     margin-block-end: 1em;
   }
 </style>

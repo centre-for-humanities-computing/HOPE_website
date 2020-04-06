@@ -1,6 +1,5 @@
 <template>
   <div class="publications">
-      <div class="page__content__block">
         <div class="list">
           <div
             v-for="(entry, index) in file"
@@ -9,7 +8,6 @@
           >
             <vAPACitation :citation="entry"></vAPACitation>
           </div>
-      </div>
     </div>
   </div>
 </template>
@@ -36,8 +34,14 @@ export default {
 
 <style scoped>
   .publications {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: left;
     min-width: 100%;
     height: 100%
+  }
+  .list {
+    max-width: 38rem;
   }
 </style>
