@@ -73,7 +73,7 @@ export default {
 
 <style scoped>
   .logo {
-    height: 100%;
+    height: 4rem;
     margin-right: 2rem;
   }
   .tag {
