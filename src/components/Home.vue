@@ -17,7 +17,6 @@
         filePath="HOPE/two.md"></vRepoFile>
       <vRepoFile
         class="box theme--background-secondary"
-        style="width: 50%"
         filePath="HOPE/three.md"
         :hideTillLoaded="true"
       ></vRepoFile>
