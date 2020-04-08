@@ -27,7 +27,7 @@
     },
     computed: {
       id () {
-        return encodeURIComponent(this.fileName)
+        return this.fileName.replace(/[^\wæøåÆØÅ-]/gi, '_')
       }
     }
   }

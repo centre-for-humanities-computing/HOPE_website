@@ -44,13 +44,11 @@ export const routes = [
   {
     path: '/coronaCrisisInDK',
     name: 'CoronaCrisisInDK',
-    inMenu: true,
     component: () => import('./components/CoronaCrisisInDK.vue')
   },
   {
     path: '/coronaKrisenIDK',
     name: 'CoronaKrisenIDK',
-    inMenu: true,
     component: () => import('./components/CoronaKrisenIDK.vue')
   },
   {
@@ -80,12 +78,11 @@ const router = new Router({
   routes,
   scrollBehavior: function(to, from, savedPosition) {
     if (to.hash) {
-      return {selector: to.hash}
+      return { selector: to.hash }
     } else {
       return { x: 0, y: 0 }
     }
-  },
-  mode: 'history'
+  }
 })
 const boxFaces = ['front', 'back', 'right', 'left', 'top', 'bottom']
 const pathFaces = {
@@ -94,6 +91,7 @@ const pathFaces = {
   '/news': 'front',
   '/publications': 'front',
   '/dashboard': 'front',
+  '/coronaCrisisInDK': 'front',
   '/md': 'top',
 }
 

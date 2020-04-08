@@ -6,25 +6,63 @@
           v-if="language !== 'da'"
           @click="language = 'da'"
           class="button button--text">
-          Vis siden på dansk
+          dansk
         </button>
         <button
+          v-if="language !== 'en'"
           @click="language = 'en'"
           class="button button--text">
-          Show this page in english
+          english
         </button>
       </div>
-      <div v-show="language !== 'da'">
-        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_1_da.md" />
-        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_2_da.md" />
-        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_3_da.md" />
-        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_4_da.md" />
-      </div>
-      <div v-show="language !== 'en'">
-        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_1_en.md" />
-        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_2_en.md" />
-        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_3_en.md" />
-        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_4_en.md" />
+      <h1><strong>What is the status of the development in the corona situation?</strong></h1>
+      <p>Tracking covid-19 symptoms, Danes' behavior, habits and experiences</p>
+      <div class="content">
+        <div v-show="language !== 'da'">
+          <vRepoFile
+            filePath="CoronaCrisisInDK/coronaCrisis_1_da.md"
+            :id="getId('coronaCrisis_1_da.md')"
+            class="box theme--background-secondary"
+          />
+          <vRepoFile
+            filePath="CoronaCrisisInDK/coronaCrisis_2_da.md"
+            :id="getId('coronaCrisis_2_da.md')"
+            class="box theme--background-secondary"
+          />
+          <vRepoFile
+            filePath="CoronaCrisisInDK/coronaCrisis_3_da.md"
+            :id="getId('coronaCrisis_3_da.md')"
+            class="box theme--background-secondary"
+          />
+          <vRepoFile
+            filePath="CoronaCrisisInDK/coronaCrisis_4_da.md"
+            :id="getId('coronaCrisis_4_da.md')"
+            class="box theme--background-secondary"
+          />
+        </div>
+
+        <div v-show="language !== 'en'">
+          <vRepoFile
+            filePath="CoronaCrisisInDK/coronaCrisis_1_en.md"
+            :id="getId('coronaCrisis_1_en.md')"
+            class="box theme--background-secondary"
+          />
+          <vRepoFile
+            filePath="CoronaCrisisInDK/coronaCrisis_2_en.md"
+            :id="getId('coronaCrisis_2_en.md')"
+            class="box theme--background-secondary"
+          />
+          <vRepoFile
+            filePath="CoronaCrisisInDK/coronaCrisis_3_en.md"
+            :id="getId('coronaCrisis_3_en.md')"
+            class="box theme--background-secondary"
+          />
+          <vRepoFile
+            filePath="CoronaCrisisInDK/coronaCrisis_4_en.md"
+            :id="getId('coronaCrisis_4_en.md')"
+            class="box theme--background-secondary"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -46,13 +84,21 @@ export default {
   },
   mounted() {
     this.language = 'en'
-  }
+  },
+  methods: {
+    getId(filePath) {
+      return filePath.replace(/[^\wæøåÆØÅ-]/gi, '_')
+    }
+  },
 }
 </script>
 
 <style scoped>
   .button-container {
-    float: right;
+    top: 200px;
+    right: 2rem;
+    position: absolute;
+    z-index: 1;
   }
   .home {
     height: 100%;
@@ -61,7 +107,7 @@ export default {
     display: grid;
     grid-template-columns: auto auto;
   }
-  .content > * {
+  .content .box {
     margin: 4px;
   }
   @media only screen and (max-width: 860px) {
