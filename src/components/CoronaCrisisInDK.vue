@@ -9,18 +9,23 @@
           Vis siden på dansk
         </button>
         <button
-          v-if="language !== 'en'"
           @click="language = 'en'"
           class="button button--text">
           Show this page in english
         </button>
       </div>
-        <vRepoFile
-          v-show="language === 'da'"
-          filePath="coronaCrisis_da.md" />
-        <vRepoFile
-          v-show="language === 'en'"
-          filePath="coronaCrisis_en.md" />
+      <div v-show="language !== 'da'">
+        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_1_da.md" />
+        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_2_da.md" />
+        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_3_da.md" />
+        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_4_da.md" />
+      </div>
+      <div v-show="language !== 'en'">
+        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_1_en.md" />
+        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_2_en.md" />
+        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_3_en.md" />
+        <vRepoFile filePath="CoronaCrisisInDK/coronaCrisis_4_en.md" />
+      </div>
     </div>
   </div>
 </template>
@@ -39,11 +44,29 @@ export default {
       }
     },
   },
+  mounted() {
+    this.language = 'en'
+  }
 }
 </script>
 
 <style scoped>
   .button-container {
     float: right;
+  }
+  .home {
+    height: 100%;
+  }
+  .content {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .content > * {
+    margin: 4px;
+  }
+  @media only screen and (max-width: 860px) {
+    .content {
+      grid-template-columns: auto;
+    }
   }
 </style>

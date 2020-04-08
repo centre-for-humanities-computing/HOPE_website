@@ -1,6 +1,7 @@
 <template>
   <div
     v-if="file || !hideTillLoaded"
+    :id="id"
   >
     <markdown-it-output v-if="file" :md="file"></markdown-it-output>
     <vSpinner v-else-if="!hideTillLoaded"></vSpinner>
@@ -22,6 +23,11 @@
       hideTillLoaded: {
         type: Boolean,
         default: false
+      }
+    },
+    computed: {
+      id () {
+        return encodeURIComponent(this.fileName)
       }
     }
   }

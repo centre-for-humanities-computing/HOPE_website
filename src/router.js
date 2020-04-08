@@ -42,6 +42,18 @@ export const routes = [
     //component: () => import(/* webpackChunkName: "search" */ './components/vDashboard.vue')
   },
   {
+    path: '/coronaCrisisInDK',
+    name: 'CoronaCrisisInDK',
+    inMenu: true,
+    component: () => import('./components/CoronaCrisisInDK.vue')
+  },
+  {
+    path: '/coronaKrisenIDK',
+    name: 'CoronaKrisenIDK',
+    inMenu: true,
+    component: () => import('./components/CoronaKrisenIDK.vue')
+  },
+  {
     path: '/bss',
     name: 'BSS',
     beforeEnter() {location.href='https://bss.au.dk/en/'}
