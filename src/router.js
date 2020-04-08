@@ -76,7 +76,17 @@ export const routes = [
   }
 ]
 
-const router = new Router({routes})
+const router = new Router({
+  ...routes,
+  scrollBehavior: function(to, from, savedPosition) {
+    if (to.hash) {
+      return {selector: to.hash}
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
+  mode: 'history'
+})
 const boxFaces = ['front', 'back', 'right', 'left', 'top', 'bottom']
 const pathFaces = {
   '/': 'front',
