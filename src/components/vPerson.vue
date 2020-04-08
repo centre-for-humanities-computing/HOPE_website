@@ -16,6 +16,8 @@
           <div class="email">
             <span>{{person.email}}</span>
           </div>
+          <div v-if="person.phone">
+
           <div
             v-if="Array.isArray(person.phone)"
             class="phone">
@@ -24,12 +26,13 @@
               :key="number"
               class="number">
               {{number}}</div>
-          </div>
-          <div
-            v-else
-            class="number">
-            {{person.phone}}
-          </div>
+            </div>
+            <div
+              v-else
+              class="number">
+              {{person.phone}}
+            </div>
+            </div>
           <div
             v-if="person.building && person.room"
             class="location">
