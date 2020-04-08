@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-      <div class="items">
+      <div>
         <vRepoFile filePath="aboutUs/theProject.md"></vRepoFile>
         <vPeople filePath="aboutUs/people.json"></vPeople>
       </div>
@@ -23,8 +23,5 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-  }
-  .items {
-    max-width: 38rem;
   }
 </style>
