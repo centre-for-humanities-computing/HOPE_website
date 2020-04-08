@@ -6,7 +6,10 @@
           :style="portraitStyle" :title="`image of ${person.name}`"></div>
       </div>
       <div class="details">
-        <div class="title">{{person.title}}<span v-if="person.role">, {{person.role}}</span></div>
+        <div class="title">{{person.title}}
+          <span v-if="person.title">,</span>
+          <span v-if="person.role">{{person.role}}</span>
+        </div>
         <div class="name">{{person.name}}</div>
         <div class="contactDetails">
           <em class="affiliation">
