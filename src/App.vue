@@ -4,7 +4,7 @@
       <vNavigation class="page__header"/>
       <div class="page__content theme--normal" id="content">
         <div class="page__content__block">
-          <router-view name="front"/>
+          <router-view />
         </div>
       </div>
       <vFooter/>

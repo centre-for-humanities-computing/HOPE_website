@@ -39,6 +39,11 @@
             :id="getId('coronaCrisis_4_da.md')"
             class="box theme--background-secondary"
           />
+          <vRepoFile
+            filePath="CoronaCrisisInDK/UngeUnderCorona_da.md"
+            :id="getId('UngeUnderCorona_da.md')"
+            class="box theme--background-secondary"
+          />
         </div>
 
         <div v-show="language !== 'en'">
